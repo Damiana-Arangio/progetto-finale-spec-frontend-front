@@ -1,0 +1,58 @@
+/**********************
+    REGOLE GENERALI
+***********************/
+
+/** Reset Pagina */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: cursive;
+    font-size: 13px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/*************
+    HEADER
+**************/
+header {
+    height: 60px;
+
+    /* Debug */
+    background-color: green;
+}
+/** Navbar */
+nav {
+    height: 100%;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 30px;
+
+    /* Debug */
+    background-color: red;
+}
+
+/** Links */
+.container-links-lr {
+    display: flex;
+    gap: 20px;
+}
+
+/* Icona calice preferiti */
+.icon {
+    width: 30px;
+    height: 30px;
+}
