@@ -9,9 +9,18 @@
     box-sizing: border-box;
 }
 
+:root {
+    --color-bg: #0f0f0f;
+    --color-gold: #d4af37;
+    --color-wine: #6b0f1a;
+    --color-text: #DDE3D7;
+}
+
 body {
     font-family: cursive;
     font-size: 13px;
+    background-color: var(--color-bg);
+    color: var(--color-text);
 }
 
 ul {
@@ -23,15 +32,21 @@ a {
     color: inherit;
 }
 
+/**************************
+    CLASSI RIUTILIZZABILI
+***************************/
+.container {
+    max-width: 1300px;
+    margin: 20px auto;
+}
+
 /*************
     HEADER
 **************/
 header {
     height: 60px;
-
-    /* Debug */
-    background-color: green;
 }
+
 /** Navbar */
 nav {
     height: 100%;
@@ -40,9 +55,6 @@ nav {
     justify-content: space-between;
     align-items: center;
     margin: 0 30px;
-
-    /* Debug */
-    background-color: red;
 }
 
 /** Links */
