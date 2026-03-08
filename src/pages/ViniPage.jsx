@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import VinoCard from "../components/VinoCard";
 
 function ViniPage() {
 
@@ -17,12 +18,20 @@ function ViniPage() {
         RENDER
     *************/
     return(
-        <h1>ViniPage</h1>
+        <div className="container">
+                {vini.map( vino => (
+                    <VinoCard
+                        key = {vino.id}
+                        vino = {vino}
+                    />
+                ))}
+        </div>
     )
 
     /*************
         FUNZIONI
     **************/
+
     // Recupera la lista dei vini dall'API
     async function fetchVini() {
         try {
