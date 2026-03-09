@@ -1,5 +1,7 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import VinoCard from "../components/VinoCard";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 function ViniPage() {
 
@@ -57,29 +59,70 @@ function ViniPage() {
     return(
 
         <>
-            {/* Barra di ricerca */}
-            <input 
-                type="text" 
-                placeholder="Cerca un vino..."
-                onChange={e => funzioneRitardata(e.target.value)}
-            />
+            <div className="container-page" >
 
-            {/* Bottoni filtraggio per Categoria */}
-            <button onClick={() => setCategoria("tutti")} > Tutti </button>
-            <button onClick={() => setCategoria("rosso")} > Rossi </button>
-            <button onClick={() => setCategoria("bianco")} > Bianchi </button>
-            <button onClick={() => setCategoria("rosato")} > Rosati </button>
+                {/* Barra di ricerca */}
+                <div className="container-searchbar">
+                    <FontAwesomeIcon icon={faMagnifyingGlass} className="icona-ricerca"/>
+                    <input
+                        type="text"
+                        placeholder="Cerca un vino..."
+                        onChange={e => funzioneRitardata(e.target.value)}
+                        className="searchbar"
+                    />
+                </div>
 
-            {/* Selezione ordinamento per titolo */}
-            <select
-                onChange={ e => setOrdinamento(e.target.value)}
-            >
-                <option value="titolo-crescente"> Titolo A-Z </option>
-                <option value="titolo-decrescente"> Titolo Z-A </option>
-            </select>
+                {/* Filtri e Ordinamenti */}
+                
+                <div className="container-filtri-e-ordinamenti">
+
+                    {/* Bottoni filtraggio per Categoria */}
+                    <div>
+
+                        <button onClick={() => setCategoria("tutti")}
+                            className={`btn-filtri ${categoria === "tutti" ? "active" : ""}`}
+                        >
+                            TUTTI
+                        </button>
+
+                        <button
+                            onClick={() => setCategoria("rosso")}
+                            className={`btn-filtri ${categoria === "rosso" ? "active" : ""}`}
+                        >
+                            ROSSI
+                        </button>
+
+                        <button
+                            onClick={() => setCategoria("bianco")}
+                            className={`btn-filtri ${categoria === "bianco" ? "active" : ""}`}
+                        >
+                            BIANCHI
+                        </button>
+
+                        <button
+                            onClick={() => setCategoria("rosato")}
+                            className={`btn-filtri ${categoria === "rosato" ? "active" : ""}`}
+                        >
+                            ROSATI
+                        </button>
+
+                    </div>
+
+                    {/* Selezione ordinamento per titolo */}
+                    <div className="container-ordinamenti">
+                        <select onChange={e => setOrdinamento(e.target.value)} className="select-ordinamenti" >
+                            <option value="titolo-crescente"> TITOLO A-Z </option>
+                            <option value="titolo-decrescente"> TITOLO Z-A </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            {/* Linea divisoria */}
+            <div className="filtri-divider"></div>
 
             {/* Lista Vini */}
-            <div className="container container-vino-card">
+            <div className=" container-page container-vino-card">
                 {viniFiltratiEOrdinati.length > 0 ? ( 
                     viniFiltratiEOrdinati.map(vino => (
                         <VinoCard
