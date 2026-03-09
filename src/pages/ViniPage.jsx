@@ -10,6 +10,7 @@ function ViniPage() {
     ***********/
     const [vini, setVini] = useState([]);
     const [searchVino, setSearchVino] = useState("");
+    const [categoria, setCategoria] = useState("tutti");
 
     useEffect( () => {
         fetchVini();
@@ -21,14 +22,26 @@ function ViniPage() {
         []);
 
 
+    /************
+        FILTRI
+    *************/
     const viniFiltrati = useMemo(() => {
 
+        let copiaVini = [...vini];
+
         // Filtro di ricerca per titolo
-        return vini.filter( vino => (
+        copiaVini = copiaVini.filter( vino => (
             vino.title.toLowerCase().includes(searchVino.toLowerCase())
         ))
 
-    }, [vini, searchVino]);
+        // Filtro categoria
+        if (categoria !== "tutti") {
+            copiaVini = copiaVini.filter(vino => vino.category === categoria);
+        }
+
+        return copiaVini;
+
+    }, [vini, searchVino, categoria]);
 
     /************
         RENDER
@@ -43,9 +56,14 @@ function ViniPage() {
                 onChange={e => funzioneRitardata(e.target.value)}
             />
 
-            {/* Sezione Lista Vini */}
-            <div className="container container-vino-card">
+            {/* Bottoni filtraggio per Categoria */}
+            <button onClick={() => setCategoria("tutti")} > Tutti </button>
+            <button onClick={() => setCategoria("rosso")} > Vino Rosso </button>
+            <button onClick={() => setCategoria("bianco")} > Vino Bianco </button>
+            <button onClick={() => setCategoria("rosato")} > Vino Rosé </button>
 
+            {/* Lista Vini */}
+            <div className="container container-vino-card">
                 {viniFiltrati.length > 0 ? ( 
                     viniFiltrati.map(vino => (
                         <VinoCard
@@ -56,7 +74,6 @@ function ViniPage() {
                 ) :(
                     <p className="nessun-risultato">Nessun vino trovato</p>
                 )}
-
             </div>
         </>
     )
