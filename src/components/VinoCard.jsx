@@ -7,10 +7,10 @@ function VinoCard( {vino} ) {
         RENDER
     *************/
     return(
-        <div>
+        <div className="vino-card">
             <img src={immagine} alt={vino.title} className="vino-img"/>
-            <h3>{vino.title.toUpperCase()}</h3>
-            <h4>{vino.category}</h4>
+            <h2>{vino.title}</h2>
+            <h4>{vino.category.toUpperCase()}</h4>
         </div>
     )
 

@@ -18,7 +18,7 @@ function ViniPage() {
         RENDER
     *************/
     return(
-        <div className="container">
+        <div className="container container-vino-card">
                 {vini.map( vino => (
                     <VinoCard
                         key = {vino.id}

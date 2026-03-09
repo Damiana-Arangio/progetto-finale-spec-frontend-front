@@ -10,17 +10,19 @@
 }
 
 :root {
-    --color-bg: #0f0f0f;
-    --color-gold: #d4af37;
-    --color-wine: #6b0f1a;
-    --color-text: #DDE3D7;
+    --color-bg: #150A0C; 
+    --color-border: #242323;
+    --color-wine: #211214;                      
+    --color-light-grey: #d2d2d2;
+    --color-gold: #D3A138;
 }
 
 body {
     font-family: cursive;
     font-size: 13px;
     background-color: var(--color-bg);
-    color: var(--color-text);
+    color: var(--color-light-grey);
+    margin: 0 auto;
 }
 
 ul {
@@ -36,7 +38,7 @@ a {
     CLASSI RIUTILIZZABILI
 ***************************/
 .container {
-    max-width: 1300px;
+    max-width: 1400px;
     margin: 20px auto;
 }
 
@@ -45,6 +47,7 @@ a {
 **************/
 header {
     height: 60px;
+    border-bottom: 1px solid var(--color-border);
 }
 
 /** Navbar */
@@ -67,4 +70,42 @@ nav {
 .icon {
     width: 30px;
     height: 30px;
+}
+
+/***********
+    MAIN
+***********/
+
+/** VinoPage */
+.container-vino-card{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    
+}
+
+.vino-card {
+    flex-basis: calc((100% - 90px) / 4);
+    text-align: center;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-wine);
+    padding: 50px 30px;
+}
+
+.vino-img {
+    height: 380px;
+    object-fit: contain;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vino-img:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+    background-color: var(--color-navbar);
+}
+
+.vino-card h4 {
+    letter-spacing: 3px;
+    color: var(--color-gold);
 }
