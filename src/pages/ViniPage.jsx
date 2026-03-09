@@ -11,6 +11,7 @@ function ViniPage() {
     const [vini, setVini] = useState([]);
     const [searchVino, setSearchVino] = useState("");
     const [categoria, setCategoria] = useState("tutti");
+    const [ordinamento, setOrdinamento] = useState("titolo-crescente")
 
     useEffect( () => {
         fetchVini();
@@ -22,14 +23,14 @@ function ViniPage() {
         []);
 
 
-    /************
-        FILTRI
-    *************/
-    const viniFiltrati = useMemo(() => {
+    /*************************
+        FILTRI E ORDINAMENTI
+    **************************/
+    const viniFiltratiEOrdinati = useMemo(() => {
 
         let copiaVini = [...vini];
 
-        // Filtro di ricerca per titolo
+        // Filtro titolo (searchbar)
         copiaVini = copiaVini.filter( vino => (
             vino.title.toLowerCase().includes(searchVino.toLowerCase())
         ))
@@ -39,9 +40,16 @@ function ViniPage() {
             copiaVini = copiaVini.filter(vino => vino.category === categoria);
         }
 
+        // Ordinamento titolo crescente/decrescente
+        if (ordinamento === "titolo-crescente") {
+            copiaVini.sort((a, b) => a.title.localeCompare(b.title));
+        } else {
+            copiaVini.sort((a, b) => b.title.localeCompare(a.title));
+        }
+
         return copiaVini;
 
-    }, [vini, searchVino, categoria]);
+    }, [vini, searchVino, categoria, ordinamento]);
 
     /************
         RENDER
@@ -62,10 +70,18 @@ function ViniPage() {
             <button onClick={() => setCategoria("bianco")} > Vino Bianco </button>
             <button onClick={() => setCategoria("rosato")} > Vino Rosé </button>
 
+            {/* Selezione ordinamento per titolo */}
+            <select
+                onChange={ e => setOrdinamento(e.target.value)}
+            >
+                <option value="titolo-crescente"> Titolo A-Z </option>
+                <option value="titolo-decrescente"> Titolo Z-A </option>
+            </select>
+
             {/* Lista Vini */}
             <div className="container container-vino-card">
-                {viniFiltrati.length > 0 ? ( 
-                    viniFiltrati.map(vino => (
+                {viniFiltratiEOrdinati.length > 0 ? ( 
+                    viniFiltratiEOrdinati.map(vino => (
                         <VinoCard
                             key={vino.id}
                             vino={vino}
