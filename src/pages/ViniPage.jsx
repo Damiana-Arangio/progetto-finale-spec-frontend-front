@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import VinoCard from "../components/VinoCard";
 
 function ViniPage() {
@@ -9,23 +9,56 @@ function ViniPage() {
         HOOK
     ***********/
     const [vini, setVini] = useState([]);
+    const [searchVino, setSearchVino] = useState("");
 
     useEffect( () => {
         fetchVini();
     },[]);
 
+    // Chiamata funzione di debounce
+    const funzioneRitardata = useCallback(
+        debounce(setSearchVino, 400),
+        []);
+
+
+    const viniFiltrati = useMemo(() => {
+
+        // Filtro di ricerca per titolo
+        return vini.filter( vino => (
+            vino.title.toLowerCase().includes(searchVino.toLowerCase())
+        ))
+
+    }, [vini, searchVino]);
+
     /************
         RENDER
     *************/
     return(
-        <div className="container container-vino-card">
-                {vini.map( vino => (
-                    <VinoCard
-                        key = {vino.id}
-                        vino = {vino}
-                    />
-                ))}
-        </div>
+
+        <>
+            {/* Barra di ricerca */}
+            <input 
+                type="text" 
+                placeholder="Cerca un vino..."
+                onChange={e => funzioneRitardata(e.target.value)}
+            />
+
+            {/* Sezione Lista Vini */}
+            <div className="container container-vino-card">
+
+                {viniFiltrati.length > 0 ? ( 
+                    viniFiltrati.map(vino => (
+                        <VinoCard
+                            key={vino.id}
+                            vino={vino}
+                        />
+                    ))
+                ) :(
+                    <p className="nessun-risultato">Nessun vino trovato</p>
+                )}
+
+            </div>
+        </>
     )
 
     /*************
@@ -48,6 +81,26 @@ function ViniPage() {
         catch (error) {
             console.error("Errore nel fetch dei vini:", error.message);
         }
+    }
+
+    // Funzione di debounce generica
+    function debounce(callback, delay) {
+        let timer;
+
+        // Funzione interna che verrà eseguita quando l'utente digita nella searchbar
+        function funzioneRitardata(value) {
+
+            // Se esiste già un timer attivo, lo cancello
+            clearTimeout(timer);
+
+            // Creo un nuovo timer
+            timer = setTimeout(function () {
+                callback(value);
+            }, delay);
+        }
+
+        // Restituisco la funzione interna
+        return funzioneRitardata;
     }
 }
 
