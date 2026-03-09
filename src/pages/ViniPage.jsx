@@ -66,9 +66,9 @@ function ViniPage() {
 
             {/* Bottoni filtraggio per Categoria */}
             <button onClick={() => setCategoria("tutti")} > Tutti </button>
-            <button onClick={() => setCategoria("rosso")} > Vino Rosso </button>
-            <button onClick={() => setCategoria("bianco")} > Vino Bianco </button>
-            <button onClick={() => setCategoria("rosato")} > Vino Rosé </button>
+            <button onClick={() => setCategoria("rosso")} > Rossi </button>
+            <button onClick={() => setCategoria("bianco")} > Bianchi </button>
+            <button onClick={() => setCategoria("rosato")} > Rosati </button>
 
             {/* Selezione ordinamento per titolo */}
             <select
