@@ -124,9 +124,9 @@ function ViniPage() {
             {/* Lista Vini */}
             <div className=" container-page container-vino-card">
                 {viniFiltratiEOrdinati.length > 0 ? ( 
-                    viniFiltratiEOrdinati.map( (vino, index) => (
+                    viniFiltratiEOrdinati.map( vino => (
                         <VinoCard
-                            key={index}
+                            key={vino.id}
                             vino={vino}
                         />
                     ))
@@ -151,8 +151,16 @@ function ViniPage() {
             }
 
             const data = await response.json();
-            setVini(data);
+
+            // Aggiungo id per ogni vino
+            const viniConId = data.map((vino, index) => ({
+                ...vino,
+                id: vino.id ? vino.id : index + 1
+            }));
+
+            setVini(viniConId);
         }
+
         catch (error) {
             console.error("Errore nel fetch dei vini:", error.message);
         }
