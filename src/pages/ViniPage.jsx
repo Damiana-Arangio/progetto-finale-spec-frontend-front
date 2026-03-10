@@ -152,13 +152,7 @@ function ViniPage() {
 
             const data = await response.json();
 
-            // Aggiungo id per ogni vino
-            const viniConId = data.map((vino, index) => ({
-                ...vino,
-                id: vino.id ? vino.id : index + 1
-            }));
-
-            setVini(viniConId);
+            setVini(data);
         }
 
         catch (error) {
