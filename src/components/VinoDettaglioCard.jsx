@@ -1,47 +1,108 @@
-import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapPin, faCalendar, faPercent } from "@fortawesome/free-solid-svg-icons";
+import { Grape } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 function VinoDettaglioCard(props) {
-    const {vino} = props;
+    const { vino } = props;
+    const navigate = useNavigate();
 
-    console.log("Vino ricevuto: ", vino);
+    console.log("render");
+    
+    return (
 
-    return(
-        
-        <article>
+        <div className="container-page">
+            
+            <button
+                className="btn-indietro"
+                onClick={() => navigate(-1)}
+            >
+                ← Torna indietro
+            </button>
 
-            <h2>
-                {vino.category} {vino.type}
-            </h2>
+            {/* Header */}
+            <div className="vino-header">
 
-            <h1>
-                {vino.title}
-            </h1>
+                {/* Tipo vino */}
+                <div className="tipo-vino-dettaglio">
+                    <p>VINO {vino.category.toUpperCase()} {vino.type.toUpperCase()}</p>
+                </div>
 
-            <figure>
-                <img src={vino.image} alt={vino.title} />
-            </figure>
+                {/* Titolo */}
+                <h2 className="vino-titolo">{vino.title}</h2>
+            </div>
 
-            <p className="vino-prezzo">
-                {vino.price} €
-            </p>
+            <div className="container-vino-layout">
 
-            <h3>Descrizione</h3>
-            <p>{vino.description}</p>
+                {/* COLONNA SINISTRA */}
+                <div className="vino-left">
+                    <figure>
+                        <img src={vino.image} alt={vino.title} className="img-vino-dettaglio" />
+                    </figure>
+                </div>
 
-            <h3>Regione</h3>
-            <p>{vino.region}</p>
 
-            <h3>Annata</h3>
-            <p>{vino.year}</p>
+                {/* COLONNA DESTRA */}
+                <div className="vino-right">
 
-            <h3>Vitigno</h3>
-            <p>{vino.grape}</p>
+                    {/* Prezzo */}
+                    <p className="vino-prezzo">€{vino.price}</p>
 
-            <h3>Gradazione</h3>
-            <p>{vino.alcohol}%</p>
+                    {/* Linea */}
+                    <div className="piccola-linea-dettaglio"></div>
 
-        </article>
+                    {/* Descrizione */}
+                    <div className="descrizione">
+                        <h4>DESCRIZIONE</h4>
+                        <p>{vino.description}</p>
+                    </div>
 
+                    {/* INFO */}
+                    <div className="vino-dettaglio-info-left-right">
+                        <div>  
+                            {/* Regione */}
+                            <div className="flex-row info-item">
+                                <FontAwesomeIcon icon={faMapPin} className="icone-info-dettaglio" />
+                                <div className="info-dettaglio">
+                                    <h4>REGIONE</h4>
+                                    <p>{vino.region}</p>
+                                </div>
+                            </div>
+
+                            {/* Anno */}
+                            <div className="flex-row info-item">
+                                <FontAwesomeIcon icon={faCalendar} className="icone-info-dettaglio" />
+                                <div className="info-dettaglio">
+                                    <h4>ANNATA</h4>
+                                    <p>{vino.year}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            {/* Vitigno */}
+                            <div className="flex-row info-item">
+                                <Grape size={20} className="icone-info-dettaglio" />
+                                <div className="info-dettaglio">
+                                    <h4>VITIGNO</h4>
+                                    <p>{vino.grape}</p>
+                                </div>
+                            </div>
+
+                            {/* Gradazione */}
+                            <div className="flex-row info-item">
+                                <FontAwesomeIcon icon={faPercent} className="icone-info-dettaglio" />
+                                <div className="info-dettaglio">
+                                    <h4>GRADAZIONE</h4>
+                                    <p>{vino.alcohol}%</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }
 

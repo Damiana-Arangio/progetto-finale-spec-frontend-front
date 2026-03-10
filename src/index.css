@@ -18,13 +18,14 @@
     --color-grey: rgb(134, 134, 134);
     --color-light-grey: #d2d2d2;
     --color-gold: #D3A138;
-    --color-light-gold: #877349;
+    --color-light-gold: #876049;
     --color-light-brown: #77665d;
 }
 
 body {
     font-family: cursive;
     font-size: 13px;
+    letter-spacing: 2.5px;
     background-color: var(--color-bg);
     color: var(--color-light-grey);
 }
@@ -45,6 +46,10 @@ a {
     max-width: 1340px;
     padding: 0 20px;
     margin: 35px auto;
+}
+
+.flex-row {
+    display: flex;
 }
 
 /*************
@@ -81,9 +86,9 @@ nav {
     MAIN
 ***********/
 
-    /**************
-        VINIPAGE
-    **************/
+    /****************
+        LISTA VINI
+    *****************/
 
         /** FILTRI E ORDINAMENTI */
 
@@ -125,7 +130,7 @@ nav {
             align-items: center;
         }
 
-        .btn-filtri {
+        .btn-filtri, .btn-indietro {
             padding: 11px 33px;
             margin-right: 10px;
             background-color: var(--color-bg);
@@ -139,7 +144,7 @@ nav {
             border: 1px solid var(--color-gold);
         }
 
-        .btn-filtri.active {
+        .btn-filtri.active, .btn-indietro:hover {
             color: var(--color-gold);
             border: 1px solid var(--color-gold);
             background-color: var(--color-light-wine);
@@ -221,3 +226,105 @@ nav {
             color: var(--color-light-brown);
             cursor: pointer;
         }
+
+
+    /*******************
+        DETTAGLIO VINO
+    ********************/
+
+    .vino-header {
+        text-align: center;
+    }
+
+    /* tipo vino */
+    .tipo-vino-dettaglio {
+        font-size: 0.7rem;
+        padding: 8px;
+        margin: 0 auto 13px;
+        max-width: 190px;
+        color: var(--color-gold);
+        border: 1px solid var(--color-gold);
+        opacity: 0.65;
+        
+    }
+
+    .vino-titolo {
+        font-size: 2.5rem;
+    }
+
+   /** Colonna sinsitra */
+   .container-vino-layout {
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       margin: 0 auto;
+       width: 65%;
+      
+   }
+
+   .img-vino-dettaglio {
+       width: 380px;
+   }
+
+   /* prezzo */
+   .vino-prezzo {
+       font-size: 32px;
+       color: var(--color-gold);
+       margin: 30px 0 10px;
+   }
+
+    /* linea decorativa */
+    .piccola-linea-dettaglio {
+        border: 1px solid var(--color-gold);
+        width: 80px;
+        opacity: 0.25;
+        margin: 15px 0;
+    }
+
+   /* descrizione */
+   .descrizione {
+       padding: 10px 0 15px;
+   }
+
+   .descrizione h4 {
+       font-weight: normal;
+       color: var(--color-light-brown);
+   }
+
+   .descrizione p {
+       font-style: oblique;
+       margin: 10px 0 25px;
+   }
+
+   /* info vino */
+   .vino-dettaglio-info-left-right {
+       display: flex;
+       gap: 60px;
+       margin: 20px 0 30px;
+   }
+
+   /* singola riga info */
+   .info-item {
+       align-items: center;
+       gap: 15px;
+       margin-bottom: 22px;
+   }
+
+   /* icone */
+   .icone-info-dettaglio {
+       color: var(--color-gold);
+       font-size: 20px;
+       min-width: 22px;
+   }
+
+   /* titoli info */
+   .info-dettaglio h4 {
+       font-size: 0.7rem;
+       color: var(--color-light-brown);
+   }
+
+   /* valori info */
+   .info-dettaglio p {
+       font-size: 1rem;
+   }
+
