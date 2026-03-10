@@ -1,3 +1,8 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import { faScaleBalanced } from "@fortawesome/free-solid-svg-icons";
+
+
 function VinoCard( {vino} ) {
 
     /* Selezione immagine per categoria */
@@ -8,6 +13,18 @@ function VinoCard( {vino} ) {
     *************/
     return(
         <div className="vino-card">
+
+            {/* Icona preferiti + confronto */}
+            <div className="container-icone-card">
+
+                <button className="btn-preferito"> 
+                    <FontAwesomeIcon icon={faHeart} />
+                </button>
+
+                <button className="btn-confronto">
+                    <FontAwesomeIcon icon={faScaleBalanced} />
+                </button>
+            </div>
             <img src={immagine} alt={vino.title} className="vino-img"/>
             <h2>{vino.title}</h2>
             <h4>{vino.category.toUpperCase()}</h4>
