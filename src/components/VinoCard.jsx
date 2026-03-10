@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faScaleBalanced } from "@fortawesome/free-solid-svg-icons";
-
+import { Link } from "react-router-dom";
 
 function VinoCard( {vino} ) {
 
@@ -25,7 +25,9 @@ function VinoCard( {vino} ) {
                     <FontAwesomeIcon icon={faScaleBalanced} />
                 </button>
             </div>
-            <img src={immagine} alt={vino.title} className="vino-img"/>
+            <Link to={`/vini/${vino.id}`}>
+                <img src={immagine} alt={vino.title} className="vino-img" />
+            </Link>
             <h2>{vino.title}</h2>
             <h4>{vino.category.toUpperCase()}</h4>
         </div>
