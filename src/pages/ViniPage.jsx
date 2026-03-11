@@ -2,10 +2,14 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import VinoCard from "../components/VinoCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import usePreferitiContext from "../hooks/usePreferitiContext";
 
 function ViniPage() {
 
     const API_URL = import.meta.env.VITE_API_URL
+
+    const {preferiti} = usePreferitiContext();
+    console.log("Preferiti:", preferiti);
 
     /**********
         HOOK
