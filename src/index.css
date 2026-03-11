@@ -217,16 +217,14 @@ nav {
             right: 20px;
         }
 
-        .container-icone-card * {
+        .container-icone-card *, .container-icone-card-dettaglio * {
             margin: 0 2px;
-            padding: 1px;
             font-size: 19px;
             background: none;
             border: none;
             color: var(--color-light-brown);
             cursor: pointer;
         }
-
 
     /*******************
         DETTAGLIO VINO
@@ -262,15 +260,21 @@ nav {
       
    }
 
-   .img-vino-dettaglio {
-       width: 380px;
+    .img-vino-dettaglio {
+        width: 380px;
+    }
+   
+   /** Colonna destra */
+   .container-prezzo-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;    
    }
 
    /* prezzo */
    .vino-prezzo {
        font-size: 32px;
        color: var(--color-gold);
-       margin: 30px 0 10px;
    }
 
     /* linea decorativa */

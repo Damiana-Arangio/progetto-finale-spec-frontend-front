@@ -17,11 +17,11 @@ function VinoCard( {vino} ) {
             {/* Icona preferiti + confronto */}
             <div className="container-icone-card">
 
-                <button className="btn-preferito"> 
+                <button> 
                     <FontAwesomeIcon icon={faHeart} />
                 </button>
 
-                <button className="btn-confronto">
+                <button>
                     <FontAwesomeIcon icon={faScaleBalanced} />
                 </button>
             </div>

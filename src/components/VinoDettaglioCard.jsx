@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapPin, faCalendar, faPercent } from "@fortawesome/free-solid-svg-icons";
+import { faMapPin, faCalendar, faPercent, faScaleBalanced } from "@fortawesome/free-solid-svg-icons";
+import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { Grape } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -35,18 +36,31 @@ function VinoDettaglioCard(props) {
             <div className="container-vino-layout">
 
                 {/* COLONNA SINISTRA */}
-                <div className="vino-left">
                     <figure>
                         <img src={vino.image} alt={vino.title} className="img-vino-dettaglio" />
                     </figure>
-                </div>
 
 
                 {/* COLONNA DESTRA */}
-                <div className="vino-right">
+                <div className="container-vino-layout-right">
 
-                    {/* Prezzo */}
-                    <p className="vino-prezzo">€{vino.price}</p>
+                    <div className="container-prezzo-icons">
+
+                        {/* Prezzo */}
+                        <p className="vino-prezzo">€{vino.price}</p>
+
+                        {/* Icona preferiti + confronto */}
+                        <div className="container-icone-card-dettaglio">
+            
+                            <button> 
+                                <FontAwesomeIcon icon={faHeart} />
+                            </button>
+            
+                            <button>
+                                <FontAwesomeIcon icon={faScaleBalanced} />
+                            </button>
+                        </div>
+                    </div>
 
                     {/* Linea */}
                     <div className="piccola-linea-dettaglio"></div>
