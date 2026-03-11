@@ -3,6 +3,7 @@ import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faScaleBalanced } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import usePreferitiContext from "../hooks/usePreferitiContext";
+import { memo } from "react";
 
 function VinoCard( {vino} ) {
 
@@ -55,4 +56,4 @@ function VinoCard( {vino} ) {
     }
 }
 
-export default VinoCard;
+export default memo(VinoCard);
