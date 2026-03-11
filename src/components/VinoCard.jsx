@@ -2,12 +2,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faScaleBalanced } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import usePreferitiContext from "../hooks/usePreferitiContext";
 
 function VinoCard( {vino} ) {
 
     /* Selezione immagine per categoria */
     const immagine = recuperaImgVino(vino.category);
-   
+
+    /* Desctructuring funzioni gestione preferiti */
+    const { handlePreferiti, isPreferito } = usePreferitiContext();
+
     /************
         RENDER
     *************/
@@ -17,8 +21,8 @@ function VinoCard( {vino} ) {
             {/* Icona preferiti + confronto */}
             <div className="container-icone-card">
 
-                <button> 
-                    <FontAwesomeIcon icon={faHeart} />
+                <button onClick={() => handlePreferiti(vino)}> 
+                    <FontAwesomeIcon icon={faHeart} className={isPreferito(vino) ? "colore-preferiti" : "colore-non-preferiti"}/>
                 </button>
 
                 <button>

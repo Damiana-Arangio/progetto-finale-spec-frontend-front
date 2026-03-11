@@ -3,13 +3,21 @@ import { faMapPin, faCalendar, faPercent, faScaleBalanced } from "@fortawesome/f
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { Grape } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import usePreferitiContext from "../hooks/usePreferitiContext";
+
 
 function VinoDettaglioCard(props) {
     const { vino } = props;
     const navigate = useNavigate();
 
+    /* Desctructuring funzioni gestione preferiti */
+    const { handlePreferiti, isPreferito } = usePreferitiContext();
+
     console.log("render");
     
+    /************
+        RENDER
+    *************/
     return (
 
         <div className="container-page">
@@ -52,8 +60,8 @@ function VinoDettaglioCard(props) {
                         {/* Icona preferiti + confronto */}
                         <div className="container-icone-card-dettaglio">
             
-                            <button> 
-                                <FontAwesomeIcon icon={faHeart} />
+                            <button onClick={() => handlePreferiti(vino)}> 
+                                <FontAwesomeIcon icon={faHeart} className={isPreferito(vino) ? "colore-preferiti" : "colore-non-preferiti"} />
                             </button>
             
                             <button>

@@ -52,6 +52,12 @@ a {
     display: flex;
 }
 
+.nessun-risultato {
+    margin-top: 50px;
+    font-size: 1.3rem;
+    font-style:oblique;
+}
+
 /*************
     HEADER
 **************/
@@ -222,8 +228,15 @@ nav {
             font-size: 19px;
             background: none;
             border: none;
-            color: var(--color-light-brown);
             cursor: pointer;
+        }
+
+        .colore-non-preferiti {
+            color: var(--color-light-brown);
+        }
+
+        .colore-preferiti {
+            color: var(--color-gold);
         }
 
     /*******************
