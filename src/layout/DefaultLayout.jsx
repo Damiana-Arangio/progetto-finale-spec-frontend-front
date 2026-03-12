@@ -1,7 +1,9 @@
 import { Outlet } from "react-router-dom"
 import Navbar from "../components/Navbar"
+import ModaleConfronto from "../components/ModaleConfronto"
 
 function DefaultLayout() {
+
     return(
 
         <>
@@ -12,6 +14,8 @@ function DefaultLayout() {
             <main>
                 <Outlet/>
             </main>
+
+            <ModaleConfronto />
         </>
 
     )

@@ -379,3 +379,61 @@ header {
        font-size: 1rem;
    }
 
+    /************
+        MODALE
+    ************/
+    .overlay-sfondo {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(21, 10, 12, 0.9);
+        z-index: 1;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .overlay-modale {
+        text-align: center;
+        width: 55%;
+        height: 60%;
+        background-color: var(--color-light-wine);
+        border: 1px solid var(--color-light-gold);
+
+        position: relative;     /* per bottone chiusura modale */
+    }
+
+    .btn-chiusura-modale {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 1.5rem;
+        background-color: transparent;
+        border: transparent;
+        color: var(--color-light-brown);
+        cursor: pointer;
+    }
+
+    .overlay-modale h2 {
+        margin: 20px auto;
+        color: var(--color-gold);
+    }
+
+    /* Contenitore dei due slot per il confronto */
+    .container-slots-confronto {
+        display: flex;
+        height: 80%;
+        gap: 30px;
+        margin: 30px 30px;
+    }
+
+    /* Singolo slot confronto */
+    .container-singolo-slot-confronto {
+        flex-basis: 50%;
+        width: 100%;
+        border: 1px dashed var(--color-light-gold);
+    }
+
