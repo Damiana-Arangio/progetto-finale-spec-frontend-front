@@ -62,18 +62,30 @@ a {
     HEADER
 **************/
 header {
-    height: 70px;
+    height: 80px;
     border-bottom: 1px solid var(--color-border);
-
+    padding-bottom: 30px;
 }
 
 /** Navbar */
-nav {
+.navbar {
     height: 100%;
     font-size: 1.3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: var(--color-light-brown);
+    
+}
+
+.container-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-logo {
+    height: 60px;
 }
 
 /** Links */
@@ -82,12 +94,34 @@ nav {
     gap: 20px;
 }
 
-/* Icona calice preferiti */
-.icon {
-    width: 30px;
-    height: 30px;
+
+
+
+.nav-link:hover, .confronto:hover {
+    color: var(--color-gold);
 }
 
+.nav-link.active {
+    color: var(--color-gold);
+}
+
+/** Links */
+.container-links-lr * {
+    font-size: 19px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.home:hover, .vini:hover {
+    color: var(--color-gold);
+}
+
+.index-sup {
+    font-size: 12px;
+    font-weight: bold;
+   
+}
 /***********
     MAIN
 ***********/
@@ -231,12 +265,12 @@ nav {
             cursor: pointer;
         }
 
-        .colore-non-preferiti {
-            color: var(--color-light-brown);
+        .color-gold {
+            color: var(--color-gold);
         }
 
-        .colore-preferiti {
-            color: var(--color-gold);
+        .color-light-brown{
+            color: var(--color-light-brown);
         }
 
     /*******************
