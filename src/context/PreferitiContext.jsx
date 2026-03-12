@@ -35,9 +35,16 @@ function PreferitiProvider( {children} ) {
         </PreferitiContext.Provider>
     )
 
+    
     /************************ 
         FUNZIONI PROVIDER
     ************************/
+   
+    // Funzione che controlla se il vino è già presente nei preferiti
+    function isPreferito(vino) {
+        return preferiti.some(preferito => preferito.id === vino.id)
+    }
+
     // Funzione per aggiungere un vino ai preferiti
     function handlePreferiti(vino) {
 
@@ -52,12 +59,6 @@ function PreferitiProvider( {children} ) {
                 currPreferiti => [...currPreferiti, vino]
             )
         }
-    }
-
-    // Funzione che controlla se il vino è già presente nei preferiti
-    function isPreferito(vino) {
-        const isPreferito = preferiti.some(preferito => preferito.id === vino.id)
-        return isPreferito;
     }
 }
 

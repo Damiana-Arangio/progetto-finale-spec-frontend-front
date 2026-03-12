@@ -28,9 +28,11 @@ function ConfrontoProvider( {children} ) {
         </ConfrontoContext.Provider>
     )
 
+
     /************************ 
         FUNZIONI PROVIDER
     ************************/
+   
     // Funzione per aprire e chiudere la modale 
     function toggleModale() {
         setIsOpenModaleConfronto(currValue => !currValue);
@@ -38,8 +40,7 @@ function ConfrontoProvider( {children} ) {
 
     // Funzione che controlla se il vino è già presente nel confronto
     function isAddConfronto(vino) {
-        const isAddConfronto = confronti.some(confronto => confronto.id === vino.id)
-        return isAddConfronto;
+        return confronti.some(confronto => confronto.id === vino.id)
     }
 
     // Funzione per aggiungere un vino al confronto
