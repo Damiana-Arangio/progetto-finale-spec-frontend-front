@@ -1,9 +1,10 @@
+import { useNavigate } from "react-router-dom";
+import { Grape } from "lucide-react";
+import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapPin, faCalendar, faPercent, faScaleBalanced } from "@fortawesome/free-solid-svg-icons";
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
-import { Grape } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import usePreferitiContext from "../hooks/usePreferitiContext";
+import useConfrontoContext from "../hooks/useConfrontoContext";
 
 
 function VinoDettaglioCard(props) {
@@ -12,6 +13,9 @@ function VinoDettaglioCard(props) {
 
     /* Desctructuring funzioni gestione preferiti */
     const { handlePreferiti, isPreferito } = usePreferitiContext();
+
+    /* Desctructuring funzioni gestione confronto */
+    const { handleConfronto, isAddConfronto } = useConfrontoContext();
 
     console.log("render");
     
@@ -61,11 +65,11 @@ function VinoDettaglioCard(props) {
                         <div className="container-icone-card-dettaglio">
             
                             <button onClick={() => handlePreferiti(vino)}> 
-                                <FontAwesomeIcon icon={faHeart} className={isPreferito(vino) ? "colore-preferiti" : "colore-non-preferiti"} />
+                                <FontAwesomeIcon icon={faHeart} className={isPreferito(vino) ? "color-gold" : "color-light-brown"} />
                             </button>
             
-                            <button>
-                                <FontAwesomeIcon icon={faScaleBalanced} />
+                            <button onClick={() => handleConfronto(vino)}>
+                                <FontAwesomeIcon icon={faScaleBalanced} className={isAddConfronto(vino) ? "color-gold" : "color-light-brown"} />
                             </button>
                         </div>
                     </div>
