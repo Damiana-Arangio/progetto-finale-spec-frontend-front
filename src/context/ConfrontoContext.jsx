@@ -18,8 +18,6 @@ function ConfrontoProvider( {children} ) {
     const [confronti, setConfronti] = useState([]);
     const [isOpenModaleConfronto, setIsOpenModaleConfronto] = useState(false);
 
-
-
     /************
         RENDER
     ************/
@@ -47,22 +45,25 @@ function ConfrontoProvider( {children} ) {
     // Funzione per aggiungere un vino al confronto
     async function handleConfronto(vino) {
 
-        // Se il vino è presente -> rimuovi, altrimenti prova ad aggiungere
+        // Se il vino è presente -> rimuovi
         if (isAddConfronto(vino)) {
             setConfronti(
-                currConfronto => currConfronto.filter(confronto => confronto.id !== vino.id)
+                currConfronti => currConfronti.filter(confronto => confronto.id !== vino.id)
             )
         }
 
+        // Altrimenti prova ad aggiungere
         else {
-            if(confronti.length >= 2) {
+
+            // Blocca l'aggiunta di più di due vini nell'array confronti
+            if (confronti.length >= 2) {
                 alert("Puoi confrontare massimo 2 vini!");
                 return
             }
 
             let vinoCompleto = vino;
 
-            // Se il vino viene aggiunto da ViniPage , recupero i dettagli mancanti
+            // Se il vino viene aggiunto da ViniPage, recupera i dettagli mancanti
             if (!vino.price) {
                 try {
                     const response = await fetch(`${API_URL}/wines/${vino.id}`);
@@ -81,8 +82,18 @@ function ConfrontoProvider( {children} ) {
                 }
             }
 
-            setConfronti(
-                currConfronto => [...currConfronto, vinoCompleto]
+            // Aggiorna stato
+            setConfronti( 
+                currConfronti => {
+                    const confrontiAggiornato = [...currConfronti, vinoCompleto]
+                
+                    // Se nell'array confronti ci sono 2 vini --> apri la modale per mostrarli
+                    if (confrontiAggiornato.length === 2) {
+                        setIsOpenModaleConfronto(true);
+                    }
+
+                    return confrontiAggiornato;
+                }
             )
         }
     }
