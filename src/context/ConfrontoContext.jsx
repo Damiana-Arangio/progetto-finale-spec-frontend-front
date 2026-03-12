@@ -16,9 +16,6 @@ function ConfrontoProvider( {children} ) {
     const [confronti, setConfronti] = useState([]);
     const [isOpenModaleConfronto, setIsOpenModaleConfronto] = useState(false);
 
-    console.log("Confronti: ", confronti);
-    console.log("isOpenModaleConfronto: ", isOpenModaleConfronto);
-
     /************
         RENDER
     ************/
