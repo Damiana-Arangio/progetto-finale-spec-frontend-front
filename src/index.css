@@ -437,3 +437,7 @@ header {
         border: 1px dashed var(--color-light-gold);
     }
 
+    .vino-img-confronto {
+        height: 200px;
+    }
+

@@ -1,15 +1,17 @@
 import useConfrontoContext from "../hooks/useConfrontoContext";
+import SlotConfrontoCard from "./SlotConfrontoCard";
 
-function ModaleConfronto( ) {
+
+function ModaleConfronto() {
 
     /* Destructuring gestione confronto */
-    const { isOpenModaleConfronto, toggleModale } = useConfrontoContext();
+    const { confronti, isOpenModaleConfronto, toggleModale } = useConfrontoContext();
 
     return(
 
         isOpenModaleConfronto && (
+
             <div className="overlay-sfondo"> 
-                
                 <div className="overlay-modale"> 
 
                     {/* Bottone per chiudere la modale */}
@@ -23,13 +25,16 @@ function ModaleConfronto( ) {
                     {/* Container slots */}
                     <div className="container-slots-confronto">
 
-                        {/* Container slot sinistro */}
-                        <div className="container-singolo-slot-confronto"> prova </div>
+                        {/* Slot sinistro */}
+                        <SlotConfrontoCard 
+                            vino={confronti[0]} />
 
-                        {/* Container slot destro */}
-                        <div className="container-singolo-slot-confronto"> prova</div>
+                        <SlotConfrontoCard 
+                            vino={confronti[1]} 
+                        />
 
                     </div>
+
                 </div>
             </div>
         )
