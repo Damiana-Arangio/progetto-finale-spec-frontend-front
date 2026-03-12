@@ -5,30 +5,33 @@ import PreferitiPage from "./pages/PreferitiPage"
 import ViniPage from "./pages/ViniPage"
 import VinoDettaglioPage from "./pages/VinoDettaglioPage"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { ConfrontoProvider } from "./context/ConfrontoContext"
 
 function App() {
 
   return (
 
     <PreferitiProvider>
-      <BrowserRouter>
-        <Routes>
+      <ConfrontoProvider>
+        <BrowserRouter>
+          <Routes>
 
-          <Route element={<DefaultLayout />}>
+            <Route element={<DefaultLayout />}>
 
-            <Route path="/" element={<HomePage />} />
+              <Route path="/" element={<HomePage />} />
 
-            <Route path="/vini">
-              <Route index element={<ViniPage />} />
-              <Route path=":id" element={<VinoDettaglioPage />} />
+              <Route path="/vini">
+                <Route index element={<ViniPage />} />
+                <Route path=":id" element={<VinoDettaglioPage />} />
+              </Route>
+
+              <Route path="/preferiti" element={<PreferitiPage />} />
+
             </Route>
 
-            <Route path="/preferiti" element={<PreferitiPage />} />
-
-          </Route>
-
-        </Routes>
-      </BrowserRouter>
+          </Routes>
+        </BrowserRouter>
+      </ConfrontoProvider>
     </PreferitiProvider>
   )
 }

@@ -1,10 +1,11 @@
+import { useState } from "react";
 import { NavLink, Link } from "react-router-dom"
 import wineGlass from "../assets/icons/wine-glass.svg"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faScaleBalanced } from "@fortawesome/free-solid-svg-icons";
 import usePreferitiContext from "../hooks/usePreferitiContext";
-import { useState } from "react";
+import useConfrontoContext from "../hooks/useConfrontoContext";
 
 function Navbar() {
 
@@ -14,14 +15,11 @@ function Navbar() {
         { path: "/preferiti", label: "Preferiti" }
     ]
 
-    /************
-        HOOK
-    ************/
-    const [isOpenConfronto, setIsOpenConfronto] = useState(false);
-
     /* Desctructuring funzioni gestione preferiti */
     const { preferiti } = usePreferitiContext();
-    console.log("preferiti>0? " , preferiti.length>0);
+
+    /* Desctructuring funzioni gestione modale */
+    const { isOpenModaleConfronto, toggleModale } = useConfrontoContext();
 
     /************
         RENDER
@@ -63,8 +61,8 @@ function Navbar() {
                     </NavLink>
                 </li>
                 <li>
-                    <button onClick={ () => setIsOpenConfronto( currValue => !currValue ) } 
-                        className={`nav-link ${isOpenConfronto ? "color-gold" : "color-light-brown"}`}>
+                    <button onClick={toggleModale} 
+                        className={`nav-link ${isOpenModaleConfronto ? "color-gold" : "color-light-brown"}`}>
                         <FontAwesomeIcon icon={faScaleBalanced} />
                     </button>
                 </li>
