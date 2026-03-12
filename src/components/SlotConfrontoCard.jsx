@@ -1,8 +1,8 @@
 
 function SlotConfrontoCard( props ) {
 
-    // Destructurin dell'oggetto vino 
-    const {vino} = props;
+    // Destructurin dell'oggetto vino + funzione rimozione cestino
+    const { vino, handleConfronto } = props;
 
     /* Selezione immagine per categoria */
     const immagine = vino ? recuperaImgVino(vino.category) : null;
@@ -15,7 +15,9 @@ function SlotConfrontoCard( props ) {
                 
                 {/* Cestino */}
                 {vino && (
-                    <button>cestino</button>
+                    <button onClick={() => handleConfronto(vino)}>
+                        cestino
+                    </button>
                 )}
 
                 {/* Slot */}

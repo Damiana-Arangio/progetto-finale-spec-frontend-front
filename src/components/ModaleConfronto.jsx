@@ -5,7 +5,7 @@ import SlotConfrontoCard from "./SlotConfrontoCard";
 function ModaleConfronto() {
 
     /* Destructuring gestione confronto */
-    const { confronti, isOpenModaleConfronto, toggleModale } = useConfrontoContext();
+    const { confronti, isOpenModaleConfronto, toggleModale, handleConfronto } = useConfrontoContext();
 
     return(
 
@@ -17,7 +17,8 @@ function ModaleConfronto() {
                     {/* Bottone per chiudere la modale */}
                     <button 
                         onClick={toggleModale}
-                        className="btn-chiusura-modale"> x </button>
+                        className="btn-chiusura-modale"> x 
+                    </button>
 
                     {/* Titolo */}
                     <h2> Confronto Vini</h2>
@@ -27,10 +28,14 @@ function ModaleConfronto() {
 
                         {/* Slot sinistro */}
                         <SlotConfrontoCard 
-                            vino={confronti[0]} />
+                            vino={confronti[0]} 
+                            handleConfronto={handleConfronto}
+                        />
 
+                        {/* Slot sinistro */}
                         <SlotConfrontoCard 
                             vino={confronti[1]} 
+                            handleConfronto={handleConfronto}
                         />
 
                     </div>

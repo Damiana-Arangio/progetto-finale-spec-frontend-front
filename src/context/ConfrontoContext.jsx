@@ -1,4 +1,5 @@
 import { createContext, useState} from "react";
+import useConfrontoContext from "../hooks/useConfrontoContext";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
