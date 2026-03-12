@@ -18,8 +18,8 @@ function Navbar() {
     /* Desctructuring funzioni gestione preferiti */
     const { preferiti } = usePreferitiContext();
 
-    /* Desctructuring funzioni gestione modale */
-    const { isOpenModaleConfronto, toggleModale } = useConfrontoContext();
+    /* Desctructuring funzioni gestione confronto modale */
+    const { confronti, isOpenModaleConfronto, toggleModale } = useConfrontoContext();
 
     /************
         RENDER
@@ -52,9 +52,7 @@ function Navbar() {
 
                 <li>
                     <NavLink to="/preferiti" className="nav-link"> 
-                        <FontAwesomeIcon 
-                            icon={faHeart} 
-                        />
+                        <FontAwesomeIcon icon={faHeart} />
                         { preferiti.length > 0 &&
                             <sup className="index-sup">{preferiti.length}</sup>
                         }
@@ -64,6 +62,9 @@ function Navbar() {
                     <button onClick={toggleModale} 
                         className={`nav-link ${isOpenModaleConfronto ? "color-gold" : "color-light-brown"}`}>
                         <FontAwesomeIcon icon={faScaleBalanced} />
+                        {confronti.length > 0 &&
+                            <sup className="index-sup">{confronti.length}</sup>
+                        }
                     </button>
                 </li>
             </ul>

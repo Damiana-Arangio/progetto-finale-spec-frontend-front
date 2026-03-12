@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
+import { memo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faScaleBalanced } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
 import usePreferitiContext from "../hooks/usePreferitiContext";
-import { memo } from "react";
+import useConfrontoContext from "../hooks/useConfrontoContext";
 
 function VinoCard( {vino} ) {
 
@@ -12,6 +13,9 @@ function VinoCard( {vino} ) {
 
     /* Desctructuring funzioni gestione preferiti */
     const { handlePreferiti, isPreferito } = usePreferitiContext();
+
+    /* Desctructuring funzioni gestione confronto */
+    const { handleConfronto, isAddConfronto } = useConfrontoContext();
 
     /************
         RENDER
@@ -23,11 +27,11 @@ function VinoCard( {vino} ) {
             <div className="container-icone-card">
 
                 <button onClick={() => handlePreferiti(vino)}> 
-                    <FontAwesomeIcon icon={faHeart} className={isPreferito(vino) ? "colore-preferiti" : "colore-non-preferiti"}/>
+                    <FontAwesomeIcon icon={faHeart} className={isPreferito(vino) ? "color-gold" : "color-light-brown"}/>
                 </button>
 
-                <button>
-                    <FontAwesomeIcon icon={faScaleBalanced} />
+                <button onClick={() => handleConfronto(vino)}> 
+                    <FontAwesomeIcon icon={faScaleBalanced} className={isAddConfronto(vino) ? "color-gold" : "color-light-brown"} />
                 </button>
             </div>
             <Link to={`/vini/${vino.id}`}>
