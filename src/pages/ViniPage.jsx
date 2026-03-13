@@ -13,7 +13,7 @@ function ViniPage() {
     const [vini, setVini] = useState([]);
     const [searchVino, setSearchVino] = useState("");
     const [categoria, setCategoria] = useState("tutti");
-    const [ordinamento, setOrdinamento] = useState("titolo-crescente")
+    const [ordinamento, setOrdinamento] = useState("titolo-crescente");
 
     useEffect( () => {
         fetchVini();
@@ -131,7 +131,23 @@ function ViniPage() {
                         />
                     ))
                 ) :(
-                    <p className="nessun-risultato">Nessun vino trovato!</p>
+                     <div className="container-nessun-preferito container-page">               
+                        <img src="/images/calice.png" alt="calice" className="calice" />
+
+                        <h2>Nessun vino trovato</h2>
+                        <p> Prova a cercare con un altro termine o cambia filtri</p>
+                            <div className="piccola-linea-dettaglio"></div>
+                            <button
+                                className="btn-indietro"
+                                onClick={() => {
+                                    setSearchVino("");
+                                    setCategoria("tutti");
+                                    setOrdinamento("titolo-crescente");
+                                }}
+                            > 
+                                ← TORNA INDIETRO
+                            </button>                    
+                    </div>
                 )}
             </div>
         </>
