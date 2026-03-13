@@ -191,7 +191,6 @@ header {
        font-weight: bold;
        letter-spacing: 3px;
        color: #f8c65a;
-        background-color: rgba(230, 135, 34, 0.35);
     }
 
     .container-content button .freccia {
@@ -203,6 +202,7 @@ header {
     .container-content button:hover {
         transform: translateY(-3px) scale(1.05);
         box-shadow: 0 6px 20px rgba(248, 198, 90, 0.4);
+        background-color: rgba(230, 135, 34, 0.35);
     }
 
     /****************
