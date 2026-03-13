@@ -1,8 +1,12 @@
+import useConfrontoContext from "../hooks/useConfrontoContext";
 
-function SlotConfrontoCard( props ) {
+import { useNavigate } from "react-router-dom";
 
-    // Destructurin dell'oggetto vino + funzione rimozione cestino
-    const { vino, handleConfronto } = props;
+function SlotConfrontoCard({ vino } ) {
+
+    /* Hooks navigazione e gestione confronto */
+    const navigate = useNavigate();
+    const { handleConfronto, toggleModale } = useConfrontoContext();
 
     /* Selezione immagine per categoria */
     const immagine = vino ? recuperaImgVino(vino.category) : null;
@@ -19,8 +23,7 @@ function SlotConfrontoCard( props ) {
                         cestino
                     </button>
                 )}
-
-                {/* Slot */}
+                
                 {vino ? (
                     <div className="slot-pieno">
 
@@ -43,9 +46,14 @@ function SlotConfrontoCard( props ) {
                     </div>
 
                 ) : (
-
                     <div className="slot-vuoto">
-                        <p>Aggiungi un vino</p>
+                        <button onClick={ () => {
+                            toggleModale();
+                            navigate("/vini")} 
+                        }>
+                            +
+                        </button>
+                        <p>Aggiungi un vino per confrontarlo</p>
                     </div>
                 )}
             </div>  
