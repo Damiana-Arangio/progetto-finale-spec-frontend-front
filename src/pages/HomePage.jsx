@@ -1,6 +1,20 @@
+import { useNavigate } from "react-router-dom";
+
 function HomePage() {
+
+    const navigate = useNavigate();
+
     return (
-        <h1>HomePage</h1>
+        <section className="bg-home">
+            <div className="overlay"></div>
+            <div className="container-content">
+                <h4> COLLEZIONE ESCLUSIVA </h4>
+                <div className="linea-decorativa"></div>
+                <h1> L'Arte del <span>Vino</span> </h1>
+                <p> Una selezione curata dei migliori vini italiani e internazionali, scelti per chi apprezza l'eccellenza </p>
+                <button onClick={() => navigate("/vini")}> ESPLORA LA COLLEZIONE <span className="freccia">→</span> </button>
+            </div>
+        </section>        
     )
 }
 

@@ -126,9 +126,91 @@ header {
     MAIN
 ***********/
 
+    /**************
+        HOMEPAGE
+    ***************/
+    .bg-home {
+        position: relative;
+        background-image: url("/images/bg-homepage.png");
+        background-size: cover;
+        background-position: center;
+        height: calc(100vh - 80px);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+    }
+
+    .container-content {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        font-size: 1rem;
+        letter-spacing: 5px;
+        width: 70%;
+    }
+
+    .container-content h1 {
+        font-size: 3.3rem;
+        margin: 40px;
+    }
+ 
+    .container-content h4,
+    .container-content span {
+        color: var(--color-gold);
+    }
+
+    .container-content h4 {
+       opacity: 70%;
+    }
+    
+    /* linea decorativa */
+    .container-content .linea-decorativa {
+        border: 1px solid var(--color-light-gold);
+        width: 80px;
+        margin: 10px auto 30px;
+        opacity: 70%;
+    }
+
+    .container-content p {
+        color: #d3b7a7;
+        margin-bottom: 60px;
+    }
+
+    .container-content button {
+       border: 1px solid var(--color-gold);
+       padding: 20px 30px;
+       background-color: transparent;
+       cursor: pointer;
+       font-weight: bold;
+       letter-spacing: 3px;
+       color: #f8c65a;
+        background-color: rgba(230, 135, 34, 0.35);
+    }
+
+    .container-content button .freccia {
+        font-size: 1rem;
+        padding-left: 10px;
+        color: #f8c65a;
+    }
+
+    .container-content button:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 6px 20px rgba(248, 198, 90, 0.4);
+    }
+
     /****************
         LISTA VINI
     *****************/
+    .bg-homepage {
+        max-width: 100%;
+    }
 
         /** FILTRI E ORDINAMENTI */
 
