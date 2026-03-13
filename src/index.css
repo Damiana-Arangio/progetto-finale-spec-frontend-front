@@ -82,6 +82,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 40px;
 }
 
 .img-logo {
@@ -93,9 +94,6 @@ header {
     display: flex;
     gap: 20px;
 }
-
-
-
 
 .nav-link:hover, .confronto:hover {
     color: var(--color-gold);
@@ -472,6 +470,45 @@ header {
         color: var(--color-grey);
     }
 
+    .container-nessun-preferito {
+        height: 50vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .icona-cuore {
+        color: var(--color-light-gold);
+        border: 1px solid var(--color-light-brown);
+        border-radius: 50%;
+        width: 80px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px auto;
+        font-size: 30px;
+    }
+
+    .container-nessun-preferito h2 {
+        letter-spacing: 5px;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        color: var(--color-light-grey);
+    }
+
+    .container-nessun-preferito p {
+        color: var(--color-light-brown);
+        font-style: oblique;
+    }
+
+    .link-nessun-preferito {
+        margin-top: 50px;
+        color: var(--color-gold);
+        font-size: 1.3rem;
+    }
 
     /************************
         MODALE - CONFRONTO
@@ -614,4 +651,3 @@ header {
         opacity: 0.25;
         margin: 10px auto 30px;
     }
-
