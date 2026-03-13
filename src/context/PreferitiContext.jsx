@@ -30,7 +30,7 @@ function PreferitiProvider( {children} ) {
     ************/
     return(
         <PreferitiContext.Provider
-            value={{ preferiti, setPreferiti, isPreferito, handlePreferiti} }>
+            value={{ preferiti, setPreferiti, isPreferito, handlePreferiti, svuotaListaPreferiti } }>
                 {children}
         </PreferitiContext.Provider>
     )
@@ -59,6 +59,11 @@ function PreferitiProvider( {children} ) {
                 currPreferiti => [...currPreferiti, vino]
             )
         }
+    }
+
+    // Funzione per eliminare tutti i vini dai preferiti
+    function svuotaListaPreferiti() {
+        setPreferiti([]);
     }
 }
 

@@ -6,7 +6,7 @@ function PreferitiPage() {
     /**********
         HOOK
     ***********/
-    const { preferiti} = usePreferitiContext();
+    const { preferiti, svuotaListaPreferiti } = usePreferitiContext();
 
     /************
         RENDER
@@ -14,6 +14,12 @@ function PreferitiPage() {
     return(
 
         <>
+            <div className="preferiti-header container-page">
+                <button onClick={svuotaListaPreferiti} className="btn-svuota-preferiti">
+                    Svuota Lista
+                </button>
+            </div>
+
             {/* Lista Preferiti */}
             <div className=" container-page container-vino-card">
                 {preferiti.length > 0 ? ( 

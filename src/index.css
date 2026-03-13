@@ -252,7 +252,7 @@ header {
             align-items: center;
         }
 
-        .btn-filtri, .btn-indietro {
+        .btn-filtri, .btn-indietro, .btn-svuota-preferiti {
             padding: 11px 33px;
             margin-right: 10px;
             background-color: var(--color-bg);
@@ -261,7 +261,7 @@ header {
             cursor: pointer;
         }
 
-        .btn-filtri:hover {
+        .btn-filtri:hover, .btn-svuota-preferiti:hover {
             color: var(--color-gold);
             border: 1px solid var(--color-gold);
         }
@@ -461,9 +461,21 @@ header {
        font-size: 1rem;
    }
 
-    /************
-        MODALE
-    ************/
+    /***************
+        PREFERITI
+    ****************/
+    .preferiti-header {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        margin-bottom: 30px;
+        color: var(--color-grey);
+    }
+
+
+    /************************
+        MODALE - CONFRONTO
+    *************************/
     .overlay-sfondo {
         position: fixed;
         top: 0;
