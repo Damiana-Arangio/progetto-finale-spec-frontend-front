@@ -398,12 +398,11 @@ header {
 
     .overlay-modale {
         text-align: center;
-        width: 45%;
+        width: 50%;
         height: 60%;
         background-color: var(--color-light-wine);
         border: 1px solid var(--color-light-gold);
         padding: 30px;
-
         position: relative;     /* per bottone chiusura modale */
     }
 
@@ -426,21 +425,28 @@ header {
     /* Contenitore dei due slot per il confronto */
     .container-slots-confronto {
         display: flex;
-        height: 80%;
+        height: 85%;
         gap: 35px;
     }
+
 
     /* Singolo slot confronto */
     .container-singolo-slot-confronto {
         flex-basis: 50%;
         width: 100%;
         border: 1px dashed var(--color-light-gold);
+
+        position: relative; /* per cestino */
+
+        font-size: 0.7rem;
+
     }
 
     .vino-img-confronto {
-        height: 200px;
+        height: 140px;
     }
 
+    /** Slot vuoto */
     .slot-vuoto {
         display: flex;
         flex-direction: column;
@@ -466,5 +472,52 @@ header {
         color: var(--color-gold);
         border: 1px solid var(--color-gold);
         font-size: 1rem;
+    }
+
+
+    /** Slot pieno */
+    .slot-pieno {
+        padding: 10px 20px;
+    }
+    .btn-cestino-confronto {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: transparent;
+        border-color: transparent;
+        color: var(--color-light-gold);
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    .btn-cestino-confronto:hover {
+        color: var(--color-light-brown);
+        font-size: 1.2rem;
+    }
+
+    .slot-pieno h4 {
+        color: var(--color-gold);
+        font-size: 0.6rem;
+        margin-top: 5px;
+    }
+
+    .dettagli-confronto p {
+        display: flex;
+        justify-content: space-between;
+        color: var(--color-light-brown);
+        font-size: 0.8rem;
+        margin: 0 10px;
+    }
+
+    .dettagli-confronto span {
+        color: var(--color-light-grey);
+    }
+
+    /* linea decorativa */
+    .mini-linea-decorativa {
+        border: 1px solid var(--color-gold);
+        width: 30px;
+        opacity: 0.25;
+        margin: 10px auto 30px;
     }
 

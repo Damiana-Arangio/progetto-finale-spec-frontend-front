@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+
 import useConfrontoContext from "../hooks/useConfrontoContext";
 
 import { useNavigate } from "react-router-dom";
@@ -19,8 +22,11 @@ function SlotConfrontoCard({ vino } ) {
                 
                 {/* Cestino */}
                 {vino && (
-                    <button onClick={() => handleConfronto(vino)}>
-                        cestino
+                    <button
+                        className="btn-cestino-confronto"
+                        onClick={() => handleConfronto(vino)}
+                    >
+                        <FontAwesomeIcon icon={faTrash} />
                     </button>
                 )}
                 
@@ -30,18 +36,18 @@ function SlotConfrontoCard({ vino } ) {
                         {/* Immagine + titolo */}
                         <img src={immagine} alt={vino.title} className="vino-img-confronto" />
                         <h3>{vino.title}</h3>
-                        <h4>{vino.category}</h4>
+                        <h4>{vino.category.toUpperCase()}</h4>
 
                         {/* Linea */}
-                        <div className="piccola-linea-dettaglio" ></div>
+                        <div className="mini-linea-decorativa" ></div>
 
                         {/* Dettagli vino */}
                         <div className="dettagli-confronto">
-                            <p> Prezzo: €{vino.price}</p>
-                            <p> Regione: {vino.region}</p>
-                            <p> Annata: {vino.year}</p>
-                            <p> Vitigno: {vino.grape}</p>
-                            <p> Gradazione: {vino.alcohol}</p>
+                            <p> Prezzo: <span> €{vino.price}</span> </p>
+                            <p> Regione: <span> {vino.region}</span> </p>
+                            <p> Annata: <span> {vino.year}</span> </p>
+                            <p> Vitigno: <span>{vino.grape}</span> </p>
+                            <p> Gradazione: <span>{vino.alcohol}%</span> </p>
                         </div>
                     </div>
 
