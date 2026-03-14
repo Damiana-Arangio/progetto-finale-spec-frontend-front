@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
+import { debounce } from "../utils/functions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import useApiContext from "../hooks/useApiContext"; 
@@ -151,30 +152,6 @@ function ViniPage() {
             </div>
         </>
     )
-
-    /*************
-        FUNZIONI
-    **************/
-
-    // Funzione di debounce generica
-    function debounce(callback, delay) {
-        let timer;
-
-        // Funzione interna che verrà eseguita quando l'utente digita nella searchbar
-        function funzioneRitardata(value) {
-
-            // Se esiste già un timer attivo, lo cancello
-            clearTimeout(timer);
-
-            // Creo un nuovo timer
-            timer = setTimeout(function () {
-                callback(value);
-            }, delay);
-        }
-
-        // Restituisco la funzione interna
-        return funzioneRitardata;
-    }
 }
 
 export default ViniPage;
