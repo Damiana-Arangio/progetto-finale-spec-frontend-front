@@ -7,6 +7,14 @@ import VinoCard from "../components/VinoCard";
 
 function ViniPage() {
 
+    // Categorie dei vini utilizzate per generare dinamicamente i bottoni dei filtri
+    const categories = [
+        { label: "TUTTI", value: "tutti" },
+        { label: "ROSSI", value: "rosso" },
+        { label: "BIANCHI", value: "bianco" },
+        { label: "ROSATI", value: "rosato" }
+    ];
+
     /***********
         HOOKS
     ************/
@@ -18,7 +26,8 @@ function ViniPage() {
         fetchVini();
     },[]);
 
-    // Chiamata funzione di debounce
+    // Funzione di ricerca con debounce per evitare 
+    // troppe chiamate API durante la digitazione
     const funzioneRitardata = useCallback(
         debounce(searchVinoByTitle, 400)
     ,[]);
@@ -65,46 +74,18 @@ function ViniPage() {
 
                     {/* Bottoni filtraggio per Categoria */}
                     <div>
-
-                        <button 
-                            onClick={() => {
-                                setCategoria("tutti");
-                                filterViniByCategory("tutti"); 
-                            }}
-                            className={`btn-filtri ${categoria === "tutti" ? "active" : ""}`}
-                        >
-                            TUTTI
-                        </button>
-
-                        <button
-                            onClick={() => {
-                                setCategoria("rosso");
-                                filterViniByCategory("rosso"); 
-                            }}
-                            className={`btn-filtri ${categoria === "rosso" ? "active" : ""}`}
-                        >
-                            ROSSI
-                        </button>
-
-                        <button
-                            onClick={() => {
-                                setCategoria("bianco")
-                                filterViniByCategory("bianco");
-                            }}
-                            className={`btn-filtri ${categoria === "bianco" ? "active" : ""}`}
-                        >
-                            BIANCHI
-                        </button>
-
-                        <button
-                            onClick={() => {
-                                setCategoria("rosato")
-                                filterViniByCategory("rosato");
-                            }}
-                            className={`btn-filtri ${categoria === "rosato" ? "active" : ""}`}
-                        >
-                            ROSATI
-                        </button>
+                        {categories.map(category => (
+                            <button
+                                key={category.value}
+                                onClick={() => {
+                                    setCategoria(category.value);
+                                    filterViniByCategory(category.value);
+                                }}
+                                className={`btn-filtri ${categoria === category.value ? "active" : ""}`}
+                            >
+                                {category.label}
+                            </button>
+                        ))}
                     </div>
 
                     {/* Selezione ordinamento per titolo */}
@@ -129,24 +110,25 @@ function ViniPage() {
                             vino={vino}
                         />
                     ))
-                ) :(
-                        <div className="container-centro-pagina container-page">               
-                        <img src="/images/calice.png" alt="calice" className="calice" />
+                ) 
+                :(
+                    <div className="container-centro-pagina container-page">               
+                    <img src="/images/calice.png" alt="calice" className="calice" />
 
-                        <h1>Nessun vino trovato</h1>
-                        <p> Prova a cercare con un altro termine o cambia filtri</p>
-                            <div className="piccola-linea-dettaglio"></div>
-                            <button
-                                className="btn-indietro"
-                                onClick={() => {
-                                    setCategoria("tutti");
-                                    setOrdinamento("titolo-crescente");
-                                    fetchVini();
-                                }}
-                            > 
-                                ← TORNA INDIETRO
-                            </button>                    
-                    </div>
+                    <h1>Nessun vino trovato</h1>
+                    <p> Prova a cercare con un altro termine o cambia filtri</p>
+                        <div className="piccola-linea-dettaglio"></div>
+                        <button
+                            className="btn-indietro"
+                            onClick={() => {
+                                setCategoria("tutti");
+                                setOrdinamento("titolo-crescente");
+                                fetchVini();
+                            }}
+                        > 
+                            ← TORNA INDIETRO
+                        </button>                    
+                </div>
                 )}
             </div>
         </>
