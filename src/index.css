@@ -58,6 +58,27 @@ a {
     font-style:oblique;
 }
 
+.container-centro-pagina {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.container-centro-pagina h1 {
+    letter-spacing: 5px;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--color-light-grey);
+}
+
+.container-centro-pagina p {
+    color: var(--color-light-brown);
+    font-style: oblique;
+}
+
 /*************
     HEADER
 **************/
@@ -250,7 +271,11 @@ header {
             align-items: center;
         }
 
-        .btn-filtri, .btn-indietro, .btn-svuota-preferiti {
+        .btn-filtri, 
+        .btn-indietro, 
+        .btn-svuota-preferiti, 
+        .btn-torna-home, 
+        .btn-not-found {
             padding: 11px 33px;
             margin-right: 10px;
             background-color: var(--color-bg);
@@ -259,7 +284,7 @@ header {
             cursor: pointer;
         }
 
-        .btn-filtri:hover, .btn-svuota-preferiti:hover {
+        .btn-filtri:hover, .btn-svuota-preferiti:hover, .btn-not-found:hover {
             color: var(--color-gold);
             border: 1px solid var(--color-gold);
         }
@@ -475,15 +500,6 @@ header {
         color: var(--color-grey);
     }
 
-    .container-nessun-preferito {
-        height: 50vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
-
     .icona-cuore {
         color: var(--color-light-gold);
         border: 1px solid var(--color-light-brown);
@@ -493,20 +509,8 @@ header {
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 0 auto 20px auto;
+        margin: 0 auto 20px;
         font-size: 30px;
-    }
-
-    .container-nessun-preferito h2 {
-        letter-spacing: 5px;
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-        color: var(--color-light-grey);
-    }
-
-    .container-nessun-preferito p {
-        color: var(--color-light-brown);
-        font-style: oblique;
     }
 
     .link-nessun-preferito {
@@ -655,4 +659,40 @@ header {
         width: 30px;
         opacity: 0.25;
         margin: 10px auto 30px;
+    }
+
+    /*******************
+        NOT FOUND PAGE
+    ********************/
+    .header-not-found {
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+        margin-top: 70px;
+    }
+
+    .header-not-found .numero {
+        font-size: 7rem;
+        color: var(--color-gold);
+        font-weight: normal;
+    }
+
+    .calice-ntf {
+        width: 70px;
+        transform: rotate(-50deg);
+        margin: 0 50px;
+    }
+
+    .main-not-found h2{
+        font-weight: normal;
+        margin-bottom: 20px;
+    }
+
+    .main-not-found h2 span {
+        font-style: oblique;
+    }
+
+    .main-not-found p {
+        margin-bottom: 50px;
+        color: var(--color-light-gold);
     }

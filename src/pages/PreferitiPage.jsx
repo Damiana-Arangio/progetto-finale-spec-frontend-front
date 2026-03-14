@@ -39,13 +39,13 @@ function PreferitiPage() {
                         />
                     ))
                 ) :(
-                        <div className="container-nessun-preferito container-page">
+                        <div className="container-centro-pagina container-page">
                         
                         <div className="icona-cuore">
                             <FontAwesomeIcon icon={faHeart} />
                         </div>
 
-                        <h2>Nessun preferito ancora</h2>
+                        <h1>Nessun preferito ancora</h1>
                         <p> Salva i vini che ami di più e ritrovali qui quando vuoi</p>
                             <div className="piccola-linea-dettaglio"></div>
                         <Link to="/vini" className="link-nessun-preferito"> ESPLORA LA COLLEZIONE → </Link>

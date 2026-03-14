@@ -131,10 +131,10 @@ function ViniPage() {
                         />
                     ))
                 ) :(
-                     <div className="container-nessun-preferito container-page">               
+                        <div className="container-centro-pagina container-page">               
                         <img src="/images/calice.png" alt="calice" className="calice" />
 
-                        <h2>Nessun vino trovato</h2>
+                        <h1>Nessun vino trovato</h1>
                         <p> Prova a cercare con un altro termine o cambia filtri</p>
                             <div className="piccola-linea-dettaglio"></div>
                             <button

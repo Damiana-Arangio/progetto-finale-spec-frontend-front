@@ -6,6 +6,7 @@ import ViniPage from "./pages/ViniPage"
 import VinoDettaglioPage from "./pages/VinoDettaglioPage"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { ConfrontoProvider } from "./context/ConfrontoContext"
+import NotFoundPage from "./pages/NotFoundPage"
 
 function App() {
 
@@ -26,6 +27,9 @@ function App() {
               </Route>
 
               <Route path="/preferiti" element={<PreferitiPage />} />
+
+              {/* Se nessuna rotta corrisponde -> mostra pagina 404 */}
+              <Route path="*" element = {<NotFoundPage/>} />
 
             </Route>
 

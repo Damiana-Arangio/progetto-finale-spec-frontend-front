@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import VinoDettaglioCard from "../components/VinoDettaglioCard";
 
 function VinoDettaglioPage() {
@@ -13,6 +13,7 @@ function VinoDettaglioPage() {
         HOOK
     ***********/
     const [vino, setVino] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchVino();
@@ -41,8 +42,13 @@ function VinoDettaglioPage() {
         try {
             const response = await fetch(`${API_URL}/wines/${idNumber}`);
 
-            if (!response.ok) {
-                throw new Error(`tipo errore HTTP ${response.status}`);
+            if (!data.success) {
+                navigate('/404');
+                throw new Error("")
+            }
+
+            if (!data.success) {
+                throw new Error(data.message);
             }
 
             const data = await response.json();
@@ -52,6 +58,7 @@ function VinoDettaglioPage() {
 
         catch (error) {
             console.error("Errore nel fetch del vino:", error.message);
+            navigate('*'); 
         }
     }
 }
