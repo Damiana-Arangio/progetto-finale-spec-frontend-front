@@ -1,23 +1,23 @@
 import { createContext, useState} from "react";
-import useConfrontoContext from "../hooks/useConfrontoContext";
+import useApiContext from "../hooks/useApiContext";
 
-const API_URL = import.meta.env.VITE_API_URL;
 
 /*************
     CONTEXT
 **************/
 
-// Creazione contesto preferiti
+// Creazione contesto confronto
 const ConfrontoContext = createContext();
 
 // Fornitura del contesto tramite Provider
 function ConfrontoProvider( {children} ) {
     
-    /**********
-        HOOK
+    /***********
+        HOOKS
     ***********/
     const [confronti, setConfronti] = useState([]);
     const [isOpenModaleConfronto, setIsOpenModaleConfronto] = useState(false);
+    const { fetchVino } = useApiContext();
 
     /************
         RENDER
@@ -39,7 +39,7 @@ function ConfrontoProvider( {children} ) {
         setIsOpenModaleConfronto(currValue => !currValue);
     }
 
-    // Funzione che controlla se il vino è già presente nel confronto
+    // Funzione che controlla se il vino è già presente nell'array confronti
     function isAddConfronto(vino) {
         return confronti.some(confronto => confronto.id === vino.id)
     }
@@ -67,21 +67,9 @@ function ConfrontoProvider( {children} ) {
 
             // Se il vino viene aggiunto da ViniPage, recupera i dettagli mancanti
             if (!vino.price) {
-                try {
-                    const response = await fetch(`${API_URL}/wines/${vino.id}`);
+                const vinoFetch = await fetchVino(vino.id);
 
-                    if (!response.ok) {
-                        throw new Error(`Errore HTTP ${response.status}`);
-                    }
-
-                    const data = await response.json();
-                    vinoCompleto = data.wine;
-
-                } 
-                catch (error) {
-                    console.error("Errore nel fetch del vino:", error.message);
-                    return
-                }
+                vinoCompleto = vinoFetch;
             }
 
             // Aggiorna stato

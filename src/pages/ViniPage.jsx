@@ -1,20 +1,19 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
-import VinoCard from "../components/VinoCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import useApiContext from "../hooks/useApiContext"; 
+import VinoCard from "../components/VinoCard";
 
 function ViniPage() {
 
-    const API_URL = import.meta.env.VITE_API_URL
-
-    /**********
-        HOOK
-    ***********/
-    const [vini, setVini] = useState([]);
+    /***********
+        HOOKS
+    ************/
     const [searchVino, setSearchVino] = useState("");
     const [categoria, setCategoria] = useState("tutti");
     const [ordinamento, setOrdinamento] = useState("titolo-crescente");
-
+    const { fetchVini, vini } = useApiContext();
+    
     useEffect( () => {
         fetchVini();
     },[]);
@@ -156,25 +155,6 @@ function ViniPage() {
     /*************
         FUNZIONI
     **************/
-
-    // Recupera la lista dei vini dall'API
-    async function fetchVini() {
-        try {
-            const response = await fetch(`${API_URL}/wines`);
-
-            if (!response.ok) {
-                throw new Error(`tipo errore HTTP ${response.status}`);
-            }
-
-            const data = await response.json();
-            
-            setVini(data);
-        }
-
-        catch (error) {
-            console.error("Errore nel fetch dei vini:", error.message);
-        }
-    }
 
     // Funzione di debounce generica
     function debounce(callback, delay) {

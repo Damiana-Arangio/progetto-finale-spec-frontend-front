@@ -10,8 +10,8 @@ const PreferitiContext = createContext();
 // Fornitura del contesto tramite Provider
 function PreferitiProvider( {children} ) {
     
-    /**********
-        HOOK
+    /***********
+        HOOKS
     ***********/
     const [preferiti, setPreferiti] = useState( () => {
 
