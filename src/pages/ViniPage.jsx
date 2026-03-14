@@ -167,7 +167,7 @@ function ViniPage() {
             }
 
             const data = await response.json();
-
+            
             setVini(data);
         }
 
