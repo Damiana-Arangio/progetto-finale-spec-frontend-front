@@ -10,10 +10,9 @@ function ViniPage() {
     /***********
         HOOKS
     ************/
-    const [searchVino, setSearchVino] = useState("");
     const [categoria, setCategoria] = useState("tutti");
     const [ordinamento, setOrdinamento] = useState("titolo-crescente");
-    const { fetchVini, vini } = useApiContext();
+    const { fetchVini, vini, searchVinoByTitle, filterViniByCategory } = useApiContext();
     
     useEffect( () => {
         fetchVini();
@@ -21,26 +20,15 @@ function ViniPage() {
 
     // Chiamata funzione di debounce
     const funzioneRitardata = useCallback(
-        debounce(setSearchVino, 400),
-        []);
+        debounce(searchVinoByTitle, 400)
+    ,[]);
 
+    /******************
+        ORDINAMENTI
+    *******************/
+    const viniOrdinati = useMemo(() => {
 
-    /*************************
-        FILTRI E ORDINAMENTI
-    **************************/
-    const viniFiltratiEOrdinati = useMemo(() => {
-
-        let copiaVini = [...vini];
-
-        // Filtro titolo (searchbar)
-        copiaVini = copiaVini.filter( vino => (
-            vino.title.toLowerCase().includes(searchVino.toLowerCase())
-        ))
-
-        // Filtro categoria
-        if (categoria !== "tutti") {
-            copiaVini = copiaVini.filter(vino => vino.category === categoria);
-        }
+        const copiaVini = [...vini];
 
         // Ordinamento titolo crescente/decrescente
         if (ordinamento === "titolo-crescente") {
@@ -51,7 +39,7 @@ function ViniPage() {
 
         return copiaVini;
 
-    }, [vini, searchVino, categoria, ordinamento]);
+    }, [vini, ordinamento]);
 
     /************
         RENDER
@@ -73,39 +61,50 @@ function ViniPage() {
                 </div>
 
                 {/* Filtri e Ordinamenti */}
-                
                 <div className="container-filtri-e-ordinamenti">
 
                     {/* Bottoni filtraggio per Categoria */}
                     <div>
 
-                        <button onClick={() => setCategoria("tutti")}
+                        <button 
+                            onClick={() => {
+                                setCategoria("tutti");
+                                filterViniByCategory("tutti"); 
+                            }}
                             className={`btn-filtri ${categoria === "tutti" ? "active" : ""}`}
                         >
                             TUTTI
                         </button>
 
                         <button
-                            onClick={() => setCategoria("rosso")}
+                            onClick={() => {
+                                setCategoria("rosso");
+                                filterViniByCategory("rosso"); 
+                            }}
                             className={`btn-filtri ${categoria === "rosso" ? "active" : ""}`}
                         >
                             ROSSI
                         </button>
 
                         <button
-                            onClick={() => setCategoria("bianco")}
+                            onClick={() => {
+                                setCategoria("bianco")
+                                filterViniByCategory("bianco");
+                            }}
                             className={`btn-filtri ${categoria === "bianco" ? "active" : ""}`}
                         >
                             BIANCHI
                         </button>
 
                         <button
-                            onClick={() => setCategoria("rosato")}
+                            onClick={() => {
+                                setCategoria("rosato")
+                                filterViniByCategory("rosato");
+                            }}
                             className={`btn-filtri ${categoria === "rosato" ? "active" : ""}`}
                         >
                             ROSATI
                         </button>
-
                     </div>
 
                     {/* Selezione ordinamento per titolo */}
@@ -123,8 +122,8 @@ function ViniPage() {
 
             {/* Lista Vini */}
             <div className=" container-page container-vino-card">
-                {viniFiltratiEOrdinati.length > 0 ? ( 
-                    viniFiltratiEOrdinati.map( vino => (
+                {viniOrdinati.length > 0 ? ( 
+                    viniOrdinati.map( vino => (
                         <VinoCard
                             key={vino.id}
                             vino={vino}
@@ -140,9 +139,9 @@ function ViniPage() {
                             <button
                                 className="btn-indietro"
                                 onClick={() => {
-                                    setSearchVino("");
                                     setCategoria("tutti");
                                     setOrdinamento("titolo-crescente");
+                                    fetchVini();
                                 }}
                             > 
                                 ← TORNA INDIETRO

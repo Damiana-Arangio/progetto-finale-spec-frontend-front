@@ -10,9 +10,10 @@ const API_URL = import.meta.env.VITE_API_URL;
 // Creazione contesto Api
 const ApiContext = createContext();
 
+// Fornitura del contesto tramite Provider
 function ApiProvider({ children }) {
 
-    /**********
+    /***********
         HOOKS
     ***********/
     const [vini, setVini] = useState([]);
@@ -22,7 +23,7 @@ function ApiProvider({ children }) {
         RENDER
     ************/
     return (
-        <ApiContext.Provider value={{ vini, fetchVini, vino, fetchVino }}>
+        <ApiContext.Provider value={{ vini, vino, fetchVini, fetchVino, searchVinoByTitle, filterViniByCategory }}>
             {children}
         </ApiContext.Provider>
     )
@@ -75,6 +76,53 @@ function ApiProvider({ children }) {
             return null;
         }
     }
+
+    // Ricerca vino per titolo
+    async function searchVinoByTitle(search) {
+
+        try {
+            const response = await fetch(`${API_URL}/wines?search=${search}`);
+
+            if (!response.ok) {
+                throw new Error(`Errore HTTP ${response.status}`);
+            }
+
+            const data = await response.json();
+            setVini(data);
+
+        } 
+        
+        catch (error) {
+            console.error("Errore nella ricerca:", error.message);
+        }
+    }
+
+
+    // Filtra per categoria
+    async function filterViniByCategory(category) {
+        try {
+
+            if (category === "tutti") {
+                fetchVini();
+                return;
+            }
+
+            const response = await fetch(`${API_URL}/wines?category=${category}`);
+
+            if (!response.ok) {
+                throw new Error(`Errore HTTP ${response.status}`);
+            }
+
+            const data = await response.json();
+            setVini(data);
+
+        } 
+
+        catch (error) {
+            console.error("Errore nel filtro dei vini:", error.message);
+        }
+    }
+
 }
 
 export { ApiContext, ApiProvider };
