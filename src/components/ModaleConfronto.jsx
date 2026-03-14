@@ -21,7 +21,7 @@ function ModaleConfronto() {
                     </button>
 
                     {/* Titolo */}
-                    <h2> Confronto Vini</h2>
+                    <h2> Confronto Vini </h2>
 
                     {/* Container slots */}
                     <div className="container-slots-confronto">

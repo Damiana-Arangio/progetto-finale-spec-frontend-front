@@ -1,19 +1,20 @@
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-
 import useConfrontoContext from "../hooks/useConfrontoContext";
-
-import { useNavigate } from "react-router-dom";
 
 function SlotConfrontoCard({ vino } ) {
 
-    /* Hooks navigazione e gestione confronto */
+    /************
+        HOOKS
+    ************/
     const navigate = useNavigate();
     const { handleConfronto, toggleModale } = useConfrontoContext();
 
-    /* Selezione immagine per categoria */
-    const immagine = vino ? recuperaImgVino(vino.category) : null;
 
+    /************
+        RENDER
+    ************/
     return(
 
         <>
@@ -34,7 +35,7 @@ function SlotConfrontoCard({ vino } ) {
                     <div className="slot-pieno">
 
                         {/* Immagine + titolo */}
-                        <img src={immagine} alt={vino.title} className="vino-img-confronto" />
+                        <img src={vino.image} alt={vino.title} className="vino-img-confronto" />
                         <h3>{vino.title}</h3>
                         <h4>{vino.category.toUpperCase()}</h4>
 
@@ -65,23 +66,6 @@ function SlotConfrontoCard({ vino } ) {
             </div>  
         </>
     )
-
-    /*************
-        FUNZIONI
-    **************/
-    // Recupera immagine in base alla categoria
-    function recuperaImgVino(category) {
-
-        if (category === "rosso") {
-            return "/images/vino-rosso.png";
-        }
-        else if (category === "bianco") {
-            return "/images/vino-bianco.png";
-        }
-        else {
-            return "/images/vino-rosato.png";
-        }
-    }
 }
 
 export default SlotConfrontoCard;
