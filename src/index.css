@@ -193,7 +193,7 @@ header {
     .overlay {
         position: absolute;
         inset: 0;
-        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8));
     }
 
     .container-content {
@@ -206,8 +206,8 @@ header {
     }
 
     .container-content h1 {
-        font-size: 3.3rem;
-        margin: 40px;
+        font-size: 5rem;
+        margin: 30px;
     }
  
     .container-content h4,
@@ -216,7 +216,7 @@ header {
     }
 
     .container-content h4 {
-       opacity: 70%;
+       opacity: 80%;
     }
     
     /* linea decorativa */
