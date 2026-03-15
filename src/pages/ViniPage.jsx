@@ -99,10 +99,12 @@ function ViniPage() {
             </div>
 
             {/* Linea divisoria */}
-            <div className="filtri-divider"></div>
+            <div className="linea-divisoria"></div>
 
-            {/* Lista Vini */}
+            {/* Risultati vini filtrati */}
             <div className=" container-page container-vino-card">
+
+                {/* Lista vini */}
                 {viniOrdinati.length > 0 ? ( 
                     viniOrdinati.map( vino => (
                         <VinoCard
@@ -110,25 +112,33 @@ function ViniPage() {
                             vino={vino}
                         />
                     ))
-                ) 
-                :(
-                    <div className="container-centro-pagina container-page">               
-                    <img src="/images/calice.png" alt="calice" className="calice" />
+                ):(
+                    <>
+                        {/* Nessun vino trovato */}
+                        <div className="container-centro-pagina container-page">
 
-                    <h1>Nessun vino trovato</h1>
-                    <p> Prova a cercare con un altro termine o cambia filtri</p>
-                        <div className="piccola-linea-dettaglio"></div>
-                        <button
-                            className="btn-indietro"
-                            onClick={() => {
-                                setCategoria("tutti");
-                                setOrdinamento("titolo-crescente");
-                                fetchVini();
-                            }}
-                        > 
-                            ← TORNA INDIETRO
-                        </button>                    
-                </div>
+                            {/* immagine vino */}
+                            <img src="/images/calice.png" alt="calice" className="calice" />
+
+                            {/* Titolo + Descrizione */}
+                            <h1>Nessun vino trovato</h1>
+                            <p> Prova a cercare con un altro termine o cambia filtri</p>
+                                    <div className="linea-decorativa-s"></div>
+                            
+                            {/* Bottone reset */}
+                            <button
+                                className="btn-indietro"
+                                onClick={() => {
+                                    setCategoria("tutti");
+                                    setOrdinamento("titolo-crescente");
+                                    searchVinoByTitle("");
+                                }}
+                            > 
+                                ← TORNA INDIETRO
+                            </button>                    
+                        </div>
+                    </>
+                
                 )}
             </div>
         </>

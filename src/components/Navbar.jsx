@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { NavLink, Link } from "react-router-dom"
-import wineGlass from "../assets/icons/wine-glass.svg"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faScaleBalanced } from "@fortawesome/free-solid-svg-icons";
@@ -15,10 +13,10 @@ function Navbar() {
         { path: "/preferiti", label: "Preferiti" }
     ]
 
-    /* Desctructuring funzioni gestione preferiti */
+    /***********
+        HOOKS
+    ***********/
     const { preferiti } = usePreferitiContext();
-
-    /* Desctructuring funzioni gestione confronto modale */
     const { confronti, isOpenModaleConfronto, toggleModale } = useConfrontoContext();
 
     /************
@@ -27,7 +25,8 @@ function Navbar() {
     return (
 
         <nav className="navbar container-page">
-            {/* Home - Vini */}
+
+            {/* Home + Vini */}
             <ul className="container-links-lr">
                 {links.slice(0, 2).map(link => (
                     <li key={link.path}>
@@ -45,11 +44,10 @@ function Navbar() {
                 </Link>
             </div>
 
-            {/* Confronto - Preferiti */}
+            {/* Icona preferiti + confronto */}
             <ul className="container-links-lr">
 
-                {/* Icona preferiti + confronto */}
-
+                {/* Preferiti */}
                 <li>
                     <NavLink to="/preferiti" className="nav-link"> 
                         <FontAwesomeIcon icon={faHeart} />
@@ -58,6 +56,8 @@ function Navbar() {
                         }
                     </NavLink>
                 </li>
+
+                {/* Confronto */}
                 <li>
                     <button onClick={toggleModale} 
                         className={`nav-link ${isOpenModaleConfronto ? "color-gold" : "color-light-brown"}`}>
@@ -67,10 +67,10 @@ function Navbar() {
                         }
                     </button>
                 </li>
-            </ul>
 
+            </ul>
         </nav>
     )
 }
 
-export default Navbar
+export default Navbar;

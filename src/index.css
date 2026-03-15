@@ -80,6 +80,29 @@ a {
     font-style: oblique;
 }
 
+/* Linee */
+.linea-divisoria {
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 50px;
+}
+
+/* linea decorativa */
+.linea-decorativa-xs {
+    border: 1px solid var(--color-gold);
+    width: 30px;
+    opacity: 0.25;
+    margin: 10px auto 30px;
+}
+
+.linea-decorativa-s {
+    border: 1px solid var(--color-gold);
+    width: 80px;
+    opacity: 0.25;
+    margin: 15px 0 30px;
+}
+
+
+
 /*************
     HEADER
 **************/
@@ -323,11 +346,6 @@ header {
             color: var(--color-gold);
         }
 
-        .filtri-divider {
-            border-bottom: 1px solid var(--color-border);
-            margin-bottom: 50px;
-        }
-
         /** LISTA VINI */
 
         /* Card */
@@ -440,14 +458,6 @@ header {
        font-size: 32px;
        color: var(--color-gold);
    }
-
-    /* linea decorativa */
-    .piccola-linea-dettaglio {
-        border: 1px solid var(--color-gold);
-        width: 80px;
-        opacity: 0.25;
-        margin: 15px 0 30px;
-    }
 
    /* descrizione */
    .descrizione {
@@ -658,14 +668,6 @@ header {
 
     .dettagli-confronto span {
         color: var(--color-light-grey);
-    }
-
-    /* linea decorativa */
-    .mini-linea-decorativa {
-        border: 1px solid var(--color-gold);
-        width: 30px;
-        opacity: 0.25;
-        margin: 10px auto 30px;
     }
 
     /*******************

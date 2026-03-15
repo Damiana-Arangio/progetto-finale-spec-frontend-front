@@ -6,12 +6,10 @@ import VinoDettaglioCard from "../components/VinoDettaglioCard";
 
 function VinoDettaglioPage() {
 
-    // Recupero id da url
-    const { id } = useParams();
-
-    /**********
+    /***********
         HOOKS
-    ***********/
+    ************/
+    const { id } = useParams();                         // Recupero id da url
     const { vino, fetchVino } = useApiContext();
 
     useEffect(() => {

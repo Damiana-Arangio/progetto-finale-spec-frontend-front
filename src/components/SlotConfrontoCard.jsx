@@ -11,7 +11,6 @@ function SlotConfrontoCard({ vino } ) {
     const navigate = useNavigate();
     const { handleConfronto, toggleModale } = useConfrontoContext();
 
-
     /************
         RENDER
     ************/
@@ -31,7 +30,8 @@ function SlotConfrontoCard({ vino } ) {
                     </button>
                 )}
                 
-                {vino ? (
+                {/* vino con dettagli */}
+                { vino ? (
                     <div className="slot-pieno">
 
                         {/* Immagine + titolo */}
@@ -39,8 +39,8 @@ function SlotConfrontoCard({ vino } ) {
                         <h3>{vino.title}</h3>
                         <h4>{vino.category.toUpperCase()}</h4>
 
-                        {/* Linea */}
-                        <div className="mini-linea-decorativa" ></div>
+                        {/* Linea decorativa */}
+                        <div className="linea-decorativa-xs" ></div>
 
                         {/* Dettagli vino */}
                         <div className="dettagli-confronto">
@@ -52,16 +52,25 @@ function SlotConfrontoCard({ vino } ) {
                         </div>
                     </div>
 
-                ) : (
-                    <div className="slot-vuoto">
-                        <button onClick={ () => {
-                            toggleModale();
-                            navigate("/vini")} 
-                        }>
-                            +
-                        </button>
-                        <p>Aggiungi un vino per confrontarlo</p>
-                    </div>
+                ) 
+                
+                :(
+                    <>
+                        {/* Nessun vino aggiunto al confronto */ }
+                        <div className="slot-vuoto">
+
+                            {/* Bottone aggiungi vino */}
+                            <button onClick={ () => {
+                                toggleModale();
+                                navigate("/vini")} 
+                            }>
+                                +
+                            </button>
+
+                            {/* Descrizione aggiungi vino */}
+                            <p>Aggiungi un vino per confrontarlo</p>
+                        </div>
+                    </>
                 )}
             </div>  
         </>

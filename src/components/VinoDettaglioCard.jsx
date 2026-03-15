@@ -7,17 +7,14 @@ import usePreferitiContext from "../hooks/usePreferitiContext";
 import useConfrontoContext from "../hooks/useConfrontoContext";
 
 
-function VinoDettaglioCard(props) {
-    const { vino } = props;
+function VinoDettaglioCard({ vino }) {
+
+    /***********
+        HOOKS
+    ***********/
     const navigate = useNavigate();
-
-    /* Desctructuring funzioni gestione preferiti */
     const { handlePreferiti, isPreferito } = usePreferitiContext();
-
-    /* Desctructuring funzioni gestione confronto */
     const { handleConfronto, isAddConfronto } = useConfrontoContext();
-
-    console.log("render");
     
     /************
         RENDER
@@ -26,6 +23,7 @@ function VinoDettaglioCard(props) {
 
         <div className="container-page">
             
+            {/* Bottone navigazione verso pagina precedente */}
             <button
                 className="btn-indietro"
                 onClick={() => navigate(-1)}
@@ -33,32 +31,30 @@ function VinoDettaglioCard(props) {
                 ← Torna indietro
             </button>
 
-            {/* Header */}
+            {/* Categoria + Tipo + Titolo vino */}
             <div className="vino-header">
-
-                {/* Tipo vino */}
                 <div className="tipo-vino-dettaglio">
                     <p>VINO {vino.category.toUpperCase()} {vino.type.toUpperCase()}</p>
                 </div>
-
-                {/* Titolo */}
                 <h2 className="vino-titolo">{vino.title}</h2>
             </div>
 
+            {/* Immagine + Dettagli vino */}
             <div className="container-vino-layout">
 
-                {/* COLONNA SINISTRA */}
+                {/* COLONNA SINISTRA: immagine */}
                     <figure>
                         <img src={vino.image} alt={vino.title} className="img-vino-dettaglio" />
                     </figure>
 
 
-                {/* COLONNA DESTRA */}
+                {/* COLONNA DESTRA: dettagli  */}
                 <div className="container-vino-layout-right">
 
+                    {/* Prezzo + icone */}
                     <div className="container-prezzo-icons">
 
-                        {/* Prezzo */}
+                        {/* prezzo */}
                         <p className="vino-prezzo">€{vino.price}</p>
 
                         {/* Icona preferiti + confronto */}
@@ -74,8 +70,8 @@ function VinoDettaglioCard(props) {
                         </div>
                     </div>
 
-                    {/* Linea */}
-                    <div className="piccola-linea-dettaglio"></div>
+                    {/* Linea Decorativa */}
+                    <div className="linea-decorativa-s"></div>
 
                     {/* Descrizione */}
                     <div className="descrizione">
@@ -85,7 +81,10 @@ function VinoDettaglioCard(props) {
 
                     {/* INFO */}
                     <div className="vino-dettaglio-info-left-right">
+
+                        {/* Regione + Anno */}
                         <div>  
+
                             {/* Regione */}
                             <div className="flex-row info-item">
                                 <FontAwesomeIcon icon={faMapPin} className="icone-info-dettaglio" />
@@ -103,9 +102,12 @@ function VinoDettaglioCard(props) {
                                     <p>{vino.year}</p>
                                 </div>
                             </div>
+                            
                         </div>
 
+                        {/* Vitigno + Gradazione */}
                         <div>
+
                             {/* Vitigno */}
                             <div className="flex-row info-item">
                                 <Grape size={20} className="icone-info-dettaglio" />
@@ -123,6 +125,7 @@ function VinoDettaglioCard(props) {
                                     <p>{vino.alcohol}%</p>
                                 </div>
                             </div>
+                            
                         </div>
 
                     </div>

@@ -2,8 +2,14 @@ import { useNavigate } from "react-router-dom";
 
 function HomePage() {
 
+    /***********
+        HOOK
+    ***********/
     const navigate = useNavigate();
 
+    /************
+        RENDER
+    ************/
     return (
         <section className="bg-home">
             <div className="overlay"></div>

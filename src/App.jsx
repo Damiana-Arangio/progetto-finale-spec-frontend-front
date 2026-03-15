@@ -11,35 +11,42 @@ import NotFoundPage from "./pages/NotFoundPage"
 
 function App() {
 
+  /*************
+      RENDER
+  **************/
   return (
+    <>
+      {/* Providers */}
+      <ApiProvider>
+        <PreferitiProvider>
+          <ConfrontoProvider>
 
-    <ApiProvider>
-      <PreferitiProvider>
-        <ConfrontoProvider>
-          <BrowserRouter>
-            <Routes>
+            {/* Routing */}
+            <BrowserRouter>
 
-              <Route element={<DefaultLayout />}>
+              {/* Rotte */}
+              <Routes>
+                <Route element={<DefaultLayout/>} >
+                  <Route path="/" element={<HomePage/>} />
 
-                <Route path="/" element={<HomePage />} />
+                  <Route path="/vini">
+                    <Route index element={<ViniPage/>} />
+                    <Route path=":id" element={<VinoDettaglioPage/>} />
+                  </Route>
 
-                <Route path="/vini">
-                  <Route index element={<ViniPage />} />
-                  <Route path=":id" element={<VinoDettaglioPage />} />
+                  <Route path="/preferiti" element={<PreferitiPage/>} />
+
+                  {/* Se nessuna rotta corrisponde -> mostra pagina 404 */}
+                  <Route path="*" element ={<NotFoundPage/>} />
                 </Route>
+              </Routes>
 
-                <Route path="/preferiti" element={<PreferitiPage />} />
+            </BrowserRouter>
 
-                {/* Se nessuna rotta corrisponde -> mostra pagina 404 */}
-                <Route path="*" element = {<NotFoundPage/>} />
-
-              </Route>
-
-            </Routes>
-          </BrowserRouter>
-        </ConfrontoProvider>
-      </PreferitiProvider>
-    </ApiProvider>
+          </ConfrontoProvider>
+        </PreferitiProvider>
+      </ApiProvider>
+  </>
   )
 }
 

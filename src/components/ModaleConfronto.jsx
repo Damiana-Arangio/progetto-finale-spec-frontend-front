@@ -4,9 +4,14 @@ import SlotConfrontoCard from "./SlotConfrontoCard";
 
 function ModaleConfronto() {
 
-    /* Destructuring gestione confronto */
+    /***********
+        HOOK
+    ***********/
     const { confronti, isOpenModaleConfronto, toggleModale } = useConfrontoContext();
 
+    /************
+        RENDER
+    *************/
     return(
 
         isOpenModaleConfronto && (

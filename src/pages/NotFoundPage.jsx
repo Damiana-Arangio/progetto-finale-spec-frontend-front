@@ -12,9 +12,10 @@ function NotFoundPage() {
     **************/
     return(
 
-        <div className="container-page container-centro-pagina">       
-            <div className="header-not-found">
+        <div className="container-page container-centro-pagina">   
 
+            {/* Titolo 404 */}
+            <div className="header-not-found">
                 <h1>
                     <span className="numero">4</span>
                     <img src="/images/calice.png" alt="calice" className="calice-ntf"/>
@@ -22,6 +23,7 @@ function NotFoundPage() {
                 </h1>
             </div>
 
+            {/* Sottotitolo + descrizione */}
             <div className="main-not-found">
                 <h2> <span>OOps!</span> Qualcuno ha versato il vino...</h2>
                 <p> La pagina che cerchi è finita fuori rotta… <br/>
