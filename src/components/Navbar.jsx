@@ -10,7 +10,6 @@ function Navbar() {
     const links = [
         { path: "/", label: "Home" },
         { path: "/vini", label: "Vini" },
-        { path: "/preferiti", label: "Preferiti" }
     ]
 
     /***********
@@ -28,7 +27,7 @@ function Navbar() {
 
             {/* Home + Vini */}
             <ul className="container-links-lr">
-                {links.slice(0, 2).map(link => (
+                {links.map(link => (
                     <li key={link.path}>
                         <NavLink to={link.path} className="nav-link">
                             {link.label}
