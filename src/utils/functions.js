@@ -21,20 +21,20 @@ function recuperaImgVino(category) {
 // Utility debounce per ritardare l'esecuzione di una funzione.
 // Usata per evitare chiamate troppo frequenti (es. input di ricerca).
 function debounce(callback, delay) {
+
     let timerId;
 
-    function funzioneRitardata(value) {
+    // Return funzione interna che ritarda l'esecuzione della callback
+    return (value) => {
 
         // Se esiste già un timer attivo, lo cancello
         clearTimeout(timerId);
 
-        // Creo un nuovo timer
-        timerId = setTimeout(function () {
+        // Creo un nuovo timer per eseguire la callback dopo il delay
+        timerId = setTimeout(() => {
             callback(value);
         }, delay);
     }
-
-    return funzioneRitardata;
 }
 
 export { recuperaImgVino, debounce };

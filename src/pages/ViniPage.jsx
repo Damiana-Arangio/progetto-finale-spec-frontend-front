@@ -28,7 +28,7 @@ function ViniPage() {
 
     // Funzione di ricerca con debounce per evitare 
     // troppe chiamate API durante la digitazione
-    const funzioneRitardata = useCallback(
+    const ritardaRicercaVino = useCallback(
         debounce(searchVinoByTitle, 400)
     ,[]);
 
@@ -64,7 +64,7 @@ function ViniPage() {
                     <input
                         type="text"
                         placeholder="Cerca un vino..."
-                        onChange={e => funzioneRitardata(e.target.value)}
+                        onChange={e => ritardaRicercaVino(e.target.value)}
                         className="searchbar"
                     />
                 </div>
