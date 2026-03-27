@@ -19,6 +19,7 @@
     --color-light-grey: #d2d2d2;
     --color-gold: #D3A138;
     --color-light-gold: #876049;
+    --color-brown: #321E17;
     --color-light-brown: #77665d;
 }
 
@@ -363,19 +364,23 @@ header {
             text-align: center;
             border: 1px solid var(--color-border);
             background-color: var(--color-wine);
-            padding: 50px 30px;
-            position: relative;
+            padding: 55px 0px 25px;
+            position: relative;   /* per icona preferiti */
+        }
+
+        .vino-card.selected {
+            border: 1px solid var(--color-gold);
+            box-shadow: 0 0 20px rgba(211, 161, 56, 0.2);
         }
 
         .vino-img {
-            height: 380px;
+            height: 180px;
             object-fit: contain;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .vino-img:hover {
             transform: translateY(-6px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
         }
 
         .vino-card h4 {
@@ -383,11 +388,28 @@ header {
             color: var(--color-gold);
         }
 
+        .container-selezione {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            border-bottom: 1px solid var(--color-gold);
+            background-color: rgba(211, 161, 56, 0.08);
+            text-align: center;
+        }
+
+        .container-selezione p {
+            color: var(--color-gold);
+            font-size: 0.7rem;
+        }
+
         .container-icone-card {
             position: absolute;
-            top: 20px;
+            top: 12px;
             right: 20px;
         }
+
 
         .container-icone-card *, .container-icone-card-dettaglio * {
             margin: 0 2px;
@@ -408,6 +430,21 @@ header {
         .calice {
             width: 70px;
             margin-bottom: 30px;
+        }
+
+        /* Gestione confronto */
+        .btn-confronto {
+            background-color: var(--color-wine);
+            margin-top: 30px;
+        }
+
+        .icona-confronto {
+            margin-right: 20px;
+        }
+
+        .active-confronto { 
+            color: var(--color-gold);
+            background-color: var(--color-brown);
         }
 
     /*******************
