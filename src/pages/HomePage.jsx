@@ -14,10 +14,10 @@ function HomePage() {
         <section className="bg-home">
             <div className="overlay"></div>
             <div className="container-content">
-                <h4> ESPLORA • SALVA • CONFRONTA </h4>
-                <h1> L'Arte del <span>Vino</span> </h1>
-                <p> Esplora una selezione di vini, scopri i dettagli <br/> e confronta le caratteristiche dei tuoi preferiti. </p>
-                <button onClick={() => navigate("/vini")}> VAI AL CATALOGO <span className="freccia">→</span> </button>
+                <h4> SCOPRI • SELEZIONA • CONFRONTA </h4>
+                <h1> Confronta i tuoi <span> preferiti </span> </h1>
+                <p> Esplora una selezione di vini, scopri i dettagli <br /> e salva i tuoi preferiti per confrontarli. </p>
+                <button onClick={() => navigate("/vini")}> SCOPRI I VINI <span className="freccia">→</span> </button>
             </div>
         </section>        
     )

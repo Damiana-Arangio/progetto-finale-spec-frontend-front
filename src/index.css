@@ -137,7 +137,8 @@ header {
 }
 
 .img-logo {
-    height: 60px;
+    height: 130px;
+    margin-top: 12px;
 }
 
 /** Links */
@@ -206,13 +207,14 @@ header {
     }
 
     .container-content h1 {
-        font-size: 5rem;
+        font-size: 3.5rem;
         margin: 30px;
     }
  
     .container-content h4,
     .container-content span {
         color: var(--color-gold);
+        padding-bottom: 20px;
     }
 
     .container-content h4 {
