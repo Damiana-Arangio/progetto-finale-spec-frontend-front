@@ -60,12 +60,15 @@ function VinoDettaglioCard({ vino }) {
                         {/* Icona preferiti + confronto */}
                         <div className="container-icone-card-dettaglio">
                         
-                            <button onClick={() => handlePreferiti(vino)}> 
+                            <button onClick={() => handlePreferiti(vino)}
+                                title={isPreferito(vino) ? "Rimuovi dai preferiti" : "Aggiungi ai preferiti"}> 
                                 <FontAwesomeIcon icon={faHeart} className={isPreferito(vino) ? "color-gold" : "color-light-brown"} />
                             </button>
             
-                            <button onClick={() => handleConfronto(vino)}>
+                            <button onClick={() => handleConfronto(vino)}
+                                title={isAddConfronto(vino) ? "Rimuovi dal confronto" : "Aggiungi al confronto"}>
                                 <FontAwesomeIcon icon={faScaleBalanced} className={isAddConfronto(vino) ? "color-gold" : "color-light-brown"} />
+                                
                             </button>
                         </div>
                     </div>

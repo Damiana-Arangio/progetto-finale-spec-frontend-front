@@ -33,6 +33,7 @@ function VinoCard( {vino} ) {
             )}
 
             {/* Icona preferiti (sempre visibile) */}
+
             <div className="container-icone-card">
                 <button
                     onClick={() => handlePreferiti(vino)}
