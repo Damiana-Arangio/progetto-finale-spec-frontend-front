@@ -164,6 +164,10 @@ header {
     cursor: pointer;
 }
 
+.container-links-lr li {
+    position: relative;
+}
+
 .home:hover, .vini:hover {
     color: var(--color-gold);
 }
@@ -171,8 +175,18 @@ header {
 .index-sup {
     font-size: 12px;
     font-weight: bold;
-   
+    min-width: 16px;
+    height: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: -5px;
+    right: -12px;
 }
+
 /***********
     MAIN
 ***********/
