@@ -23,17 +23,25 @@ function VinoCard( {vino} ) {
     *************/
     return (
 
-        <div className="vino-card">
+        <div className={`vino-card ${isAddConfronto(vino) ? "selected" : ""}`}>
 
-            {/* Icona preferiti + confronto */}
+            {/* 🔥 SOLO SE SELEZIONATO */}
+            {isAddConfronto(vino) && (
+                <div className="container-selezione">
+                    <p>✓ SELEZIONATO</p>
+                </div>
+            )}
+
+            {/* ❤️ SEMPRE VISIBILE */}
             <div className="container-icone-card">
-
-                <button onClick={() => handlePreferiti(vino)}> 
-                    <FontAwesomeIcon icon={faHeart} className={isPreferito(vino) ? "color-gold" : "color-light-brown"}/>
-                </button>
-
-                <button onClick={() => handleConfronto(vino)}> 
-                    <FontAwesomeIcon icon={faScaleBalanced} className={isAddConfronto(vino) ? "color-gold" : "color-light-brown"} />
+                <button
+                    onClick={() => handlePreferiti(vino)}
+                    title={isPreferito(vino) ? "Rimuovi dai preferiti" : "Aggiungi ai preferiti"}
+                >
+                    <FontAwesomeIcon
+                        icon={faHeart}
+                        className={isPreferito(vino) ? "color-gold" : "color-light-brown"}
+                    />
                 </button>
             </div>
 
@@ -45,6 +53,16 @@ function VinoCard( {vino} ) {
             {/* Titolo + categoria */}
             <h2>{vino.title}</h2>
             <h4>{vino.category.toUpperCase()}</h4>
+
+            {/* Bottone Confronto */}
+            <button
+                onClick={() => handleConfronto(vino)}
+                className={`btn-confronto btn-filtri ${isAddConfronto(vino) ? "active-confronto" : ""}`}
+            >
+                <FontAwesomeIcon icon={faScaleBalanced} className="icona-confronto" />
+
+                {isAddConfronto(vino) ? "Rimuovi dal Confronto" : "Aggiungi al Confronto" }
+            </button>
         </div>
     )
 }

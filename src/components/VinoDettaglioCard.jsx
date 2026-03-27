@@ -59,7 +59,7 @@ function VinoDettaglioCard({ vino }) {
 
                         {/* Icona preferiti + confronto */}
                         <div className="container-icone-card-dettaglio">
-            
+                        
                             <button onClick={() => handlePreferiti(vino)}> 
                                 <FontAwesomeIcon icon={faHeart} className={isPreferito(vino) ? "color-gold" : "color-light-brown"} />
                             </button>
