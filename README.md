@@ -1,71 +1,60 @@
-<h1 align="center">🍷 Esplora, Salva e Confronta vini</h1>
+<h1 align="center">🍷 Wine Comparator</h1>
 
-Single Page Application (SPA) realizzata con React che consente all’utente di esplorare un catalogo di vini, visualizzarne i dettagli e interagire con i contenuti tramite ricerca per titolo, filtri per categoria e ordinamento dei risultati, oltre a salvare i vini nei preferiti e confrontarne le caratteristiche.
+**Wine Comparator** è una Single Page Application (SPA) sviluppata con **React** che consente di:
 
-## Anteprima applicazione
+* Visualizzare una lista di vini
+* Consultare i dettagli di ogni vino
+* Salvare vini nei preferiti
+* Confrontare due vini selezionati
 
-### Home
+L'applicazione include funzionalità di ricerca, filtro e ordinamento dei dati.
 
-![Home](./public/anteprima/home.png)
 
-### Catalogo vini
-Pagina principale per l'esplorazione del catalogo con ricerca, filtri e ordinamento.
-
-![Catalogo](./public/anteprima/catalogo.png)
-
-### Dettaglio vino
-Visualizzazione delle informazioni complete di un vino selezionato.
-
-![Dettaglio](./public/anteprima/dettaglio.png)
-
-### Confronto vini
-
-Confronto tra due vini tramite modale dedicata.
-
-<p align="center">
-  <img src="./public/anteprima/confronto-vuoto.png" width="45%">
-  <img src="./public/anteprima/confronto.png" width="45%">
+## 🎥 Demo
+<p>
+  <img src="./public/anteprima/demo.gif" alt="Demo applicazione" width="1080"/>
 </p>
 
-### Preferiti
+## 📸 Screenshot
 
-Gestione dei vini salvati nei preferiti.
+### Lista vini
+![Lista vini](./public/anteprima/pagina-vini.png)
 
-<p align="center">
-  <img src="./public/anteprima/preferiti.png" width="45%">
-  <img src="./public/anteprima/preferiti-vuoto.png" width="45%">
-</p>
+### Comparatore
+![Comparatore](./public/anteprima/confronto.png)
 
+## Funzionalità principali
+- Ricerca vini con debounce
+- Filtri per categoria (rosso, bianco, rosato)
+- Ordinamento per titolo (A-Z / Z-A)
+- Gestione vini preferiti (persistenza con localStorage)
+- Confronto tra due vini tramite modale
+- Pagina dettaglio di un singolo vino
+- Gestione stati vuoti (nessun risultato / preferiti vuoti)
+- Pagina 404 personalizzata
 
-### Ricerca
-Gestione dello stato in cui la ricerca non restituisce risultati.
+## Implementazione tecnica
+- Debounce per ottimizzare le chiamate API
+- useMemo per evitare ricalcoli inutili
+- useCallback per stabilizzare le funzioni tra i render
+- Context API per la gestione dello stato globale + custom hooks
+- localStorage per la persistenza dei preferiti
+- React.memo per ottimizzazione dei componenti renderizzati in lista
 
-![Ricerca senza risultati](./public/anteprima/nessun-risultato.png)
-
----
-
-### Pagina 404
-
-Pagina mostrata quando l'utente tenta di accedere ad una rotta inesistente.
-
-![Pagina not found](./public/anteprima/notfound.png)
+## Stack
+- React
+- React Router DOM
+- Vite
+- CSS
+- Font Awesome
+- Lucide Icons
 
 ## Architettura dell'applicazione
-
 Lo schema seguente mostra la struttura principale dell'applicazione: i **Provider** che gestiscono i context globali, il **layout principale** organizzato con `Outlet` per il rendering dinamico delle pagine e i **componenti principali** utilizzati nelle diverse sezioni dell'app.
 
 È inoltre presente una **modale di confronto**, accessibile da diverse pagine dell'applicazione, che permette di confrontare le caratteristiche di due vini selezionati.
 
 ![Architettura applicazione](./public/anteprima/architettura.png)
-
-## Tecnologie utilizzate
-
-- React
-- React Router
-- Vite
-- CSS
-- Font Awesome
-- Lucide Icons
 
 
 ## Setup del progetto
@@ -95,10 +84,9 @@ Nel progetto frontend è inclusa una cartella `backend` che contiene:
 - il file `types.ts`
 - il database JSON della risorsa utilizzata
 
-Per avviare correttamente il backend, copia questi file nella cartella del backend clonato, rispettivamente nelle directory:
-
-- `types.ts` nella root del backend
-- il file JSON nella cartella `database/`
+Per avviare correttamente il backend:
+- copia types.ts nella root del backend
+- copia il file JSON nella cartella database/
 
 ## 👩‍💻 Damiana Arangio  
 
